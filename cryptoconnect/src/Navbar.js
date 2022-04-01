@@ -29,6 +29,14 @@ export default function Navbar() {
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span class="fas fa-user"></span> Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Login</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

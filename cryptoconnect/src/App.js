@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Table_of_other_coins from './components/coin_item/Table_of_other_coins.js';
+import Chosen_coins from './components/coin_item/Chosen_coin';
+import Coin_note from './components/coin_item/Coin_note';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Chosen_coins />
+        <Coin_note />
+      </div>
     </div>
   );
 }

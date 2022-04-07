@@ -9,7 +9,7 @@ function Signup(){
            <label for="pasword" class="sr-only text-muted">Password</label>
            <input type="password" id="password" placeholder="Password" class="form-control"/>
            <div class="mt-3"><button class="btn btn-lg btn-primary btn-block">Sign up</button></div>
-           <p class="text-muted mt-5" >Don't have an account? <a href="Signup.js">Signup</a></p>
+           <p class="text-muted mt-5" >Already have an account? <a href="Signup.js">Login</a></p>
         </form> )
 }
 

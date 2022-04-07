@@ -1,3 +1,4 @@
+import './form.css';
 function Login(){
     return(
         <form class="mt-5" >

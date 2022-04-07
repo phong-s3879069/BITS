@@ -1,3 +1,4 @@
+import './form.css';
 function Signup(){
     return(
         <form >

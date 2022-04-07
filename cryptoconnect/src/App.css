@@ -1,10 +1,17 @@
 .App {
   text-align: center;
 }
+*{
+  background-color: #122540;
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+form{
+  max-width: 480px;
+  margin: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {

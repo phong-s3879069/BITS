@@ -13,7 +13,7 @@ export default function News_main_page() {
                 </div>
             </div>
             {/* <div class="tabs_container"> */}
-            <div class="container d-flex justify-content-start">
+            <div class="container ">
                 <ul class="nav nav-pills mb-3 row" id="pills-tab" role="tablist">
                     <div class="tabs_items col-sm">
                         <div class="tabs_text">All</div>

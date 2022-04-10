@@ -1,0 +1,92 @@
+* {
+  /* color: white; */
+  /* background-color: #122540; */
+}
+#flw-btn {
+  float: right;
+}
+
+
+.post-img {
+  width: 100%;
+}
+
+/* Post Css */
+.Post {
+  background-color: #0B1A2F;
+}
+
+/* Forum Css */
+.Forum {
+  background-color: #122540;
+}
+
+
+/* Sidebar Css */
+.Sidebar {
+  background-color: #0B1A2F !important;
+  color: white !important;
+}
+
+.sidebar-hr {
+      border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.fa-comment {
+  margin-left: 5%;
+}
+
+/* CreatePost Css */
+.CreatePost {
+  width: 70%;
+  margin: auto;
+  background-color: #0B1A2F;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.createpost {
+  background-color: #0B1A2F;
+  width: 100%;
+}
+
+
+/* PostDetail CSS */
+.PostDetail {
+  background-color: #122540;
+  color: white;
+}
+
+.PostDetail .cat-button {
+  margin-left: 3%;
+}
+
+.PostDetail .edit-btn {
+  margin-right: 3%;
+}
+
+.PostDetail .delete-btn {
+  margin-right: 3%;
+}
+
+.PostDetail .detail-article {
+  margin-bottom: 5%;
+}
+
+
+/* Comment Section CSS */
+.CommentSection .bg-light {
+  background-color: #122540!important;
+}
+
+.CommentSection .card {
+  border: none;
+}
+
+.CommentSection .comment-btn {
+  margin-right: 3%;
+}
+

@@ -1,15 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Login from './components/login_signup/Login';
-import Signup from './components/login_signup/Signup';
+import Lessons_main_page from './components/Lessons_page/Lessons_main_page';
+
 
 function App() {
-  return (
+    return(
     <div className="App">
-      <Login/>
-      <Signup/>
-    </div>
-  );
+         <Lessons_main_page></Lessons_main_page>
+    </div> 
+    )
 }
 
 export default App;

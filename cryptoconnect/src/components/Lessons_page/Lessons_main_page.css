@@ -1,0 +1,33 @@
+* {
+    background-color: #122540;
+}
+.lessons-main-page{
+    background-color: #122540;
+}
+.title{
+    height:100px;
+    color:#FFF;
+    text-align: center;
+    padding: 70px 0;
+    margin-bottom: 100px;
+}
+.tabs_items{
+    height: 100%;
+    border-radius: 50px;
+    margin-right: 10px;
+    background-color: #0B1A2F;
+    text-decoration: none;
+}
+.tabs_text{
+    margin-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #FFF;
+}
+a:hover{
+    background-color: gray;
+}
+.tabs_text:hover{
+    color:#fff;
+}

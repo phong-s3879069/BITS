@@ -35,7 +35,6 @@ export default function News_items_page(){
                 </div>
                 
             </div>
-            
         </div>
     )
 }

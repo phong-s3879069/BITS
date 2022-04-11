@@ -11,11 +11,13 @@ import Homepage from './Homepage';
 import Profile_page from './components/profile_page/Profile_page';
 import News_main_page from './components/News_page/News_main_page';
 import News_items_page from './components/News_page/News_items_page';
+import News_form from './components/News_page/News_form';
 function App() {
   return (
     <div className="App">
       {/* <News_main_page></News_main_page> */}
-      <News_items_page></News_items_page>
+      {/* <News_items_page></News_items_page> */}
+      <News_form></News_form>
     </div>
     
     // <div>

@@ -1,54 +1,47 @@
 import './News_form.css'
-
+import './CreateNews.js'
+import CreateNews from './CreateNews.js'
 
 export default function News_form(){
+    const news =  new CreateNews();
     return(
-        // <div class = 'form-container'>
-        //     <div class= 'form-header'>Form</div>
-        //     <div class= 'form-body-title'>TITLE</div>
-        //     <div class= 'form-title-field'>
-        //         <div class=  'form-black-text'>Enter title...</div>
-        //     </div>
-        //     <div class = 'form-category'>
-        //         <div class = 'form-white-text'>Category</div>
-        //     </div>
-        //     <div class = 'form-body-title'>Body</div>
-        //     <div class = 'form-content-field'>
-        //         <div class = 'form-black-text'>Write something here</div>
-        //     </div>
-        //     <div class = 'form-button-container'>
-        //         <div class = 'form-image-button'>
-        //             <div class = 'form-white-text'>Add image</div>
-        //         </div>
-        //         <div class = 'form-create-button'>
-        //             <div class = 'form-white-text'>Create</div>
-        //         </div>
-        //     </div>
-        // </div>
-    
         <form>
-            <div class = 'form-container'>
-                <div class = 'form-header'>Form</div>
-                <div class = 'form-group'>
-                    <div class = 'form-body-title'>TITLE</div>
-                    <input type='text' class='form-control' id='tiltleInput' placeholder='Enter title...'></input>
+            <div className = 'form-container'>
+                <div className = 'form-header'>Form</div>
+                <div className = 'form-group'>
+                    <div className = 'form-body-title'>TITLE</div>
+                    <textarea className="form-control"  id='contentInput' rows="2" placeholder='Enter title'
+                        required 
+                        value = {news.state.title}
+                        onChange  = {news.onChangeTitle}></textarea>
                 </div>
-                <div class = 'form-group'>
-                    <div class='form-category'>Category</div>
-                    <select class='form-control' style= {{width: '20%', marginBottom: '3%'}} id='categorySelect'>
-                        <option>Category 1</option>
-                        <option>Category 2</option>
-                        <option>Category 3</option>
-                        <option>Category 4</option>
+                <div className = 'form-group'>
+                    <div className='form-category'>Category</div>
+                    <select className='form-control' style= {{width: '20%', marginBottom: '3%'}} id='categorySelect'
+                        required
+                        value = {news.state.category}
+                        onChange = {news.onChangeCategory}>
+                            {
+                                news.state.categoryList.map(function(category) {
+                                    return<option
+                                        key = {category}
+                                        value = {category}> {category}
+                                        </option>
+                                })
+                            }
+                        
                     </select>
                 </div>
-                <div class = 'form-group'>
-                    <div class = 'form-body-title'>BODY</div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" placeholder='Write something here'></textarea>
+                <div className = 'form-group'>
+                    <div className = 'form-body-title'>BODY</div>
+                    <textarea className ="form-control" id='contentInput' rows="20" placeholder='Write something here'
+                        required
+                        value = {news.state.content}
+                        onChange = {news.onChangeContent}></textarea>
                 </div>
-                <div class = 'form-group'>
-                    <input type='file' class = 'form-control-file form-button-container' placeholder = 'Add image'></input>
-                    <button type='submit' class = 'form-create-button form-button-container'>Create</button>
+                <div className = 'form-group'>
+                    <input type='file' className = 'form-control-file form-button-container' id='addImage' placeholder = 'Add image'></input>
+                    <button type='submit' className = 'form-create-button form-button-container' id = 'create'>Create</button>
                 </div>
             </div>
         </form>

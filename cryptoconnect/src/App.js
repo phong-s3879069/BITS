@@ -17,12 +17,14 @@ import PostDetail from './components/forum/PostDetailPage';
 import News_main_page from './components/News_page/News_main_page';
 import News_items_page from './components/News_page/News_items_page';
 import News_form from './components/News_page/News_form';
+import CreateNews from './components/News_page/CreateNews';
 function App() {
+
   return (
     <div>
       {/* <CreateNewPost></CreateNewPost> */}
-      <News_form></News_form>
-     
+      {/* <News_form></News_form> */}
+      {/*<CreateNews></CreateNews>*/}
     </div>
         // <div>
         //   <Router>

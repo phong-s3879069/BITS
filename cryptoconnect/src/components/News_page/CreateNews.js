@@ -78,7 +78,7 @@ export default class CreateNews extends Component {
                             required
                             value = {this.state.title}
                             onChange = {this.onChangeTitle}
-                            ></textarea>
+                            />
                     </div>
                     <div className = 'form-group'>
                         <div className ='form-category'>Category</div>
@@ -88,7 +88,7 @@ export default class CreateNews extends Component {
                             onChange = {this.onChangeCategory}>
                                 {
                                     this.state.categoryList.map(function(category) {
-                                        return <option 
+                                        return <option
                                             key = {category}
                                             value = {category}> {category}
                                         </option>;
@@ -99,13 +99,12 @@ export default class CreateNews extends Component {
                     <div className = 'form-group'>
                         <div className = 'form-body-title'>BODY</div>
                         <textarea className = "form-control" id='contentInput' rows="20" placeholder='Write something here'
-                        required
-                        value = {this.state.content}
-                        onChange = {this.onChangeContent}></textarea>
+                            required
+                            value = {this.state.content}
+                            onChange = {this.onChangeContent}/>
                     </div>
                     <div className = 'form-group'>
-                        <input type='file' className = 'form-control-file form-button-container' id='addImage' placeholder = 'Add image'></input>
-                        {/* <input type = 'submit' value = 'Create news log' className = 'form-create-button form-button-container' id = 'create' placeholder = 'Create'></input> */}
+                        <input type='file' className = 'form-control-file form-button-container' id='addImage' placeholder = 'Add image'/>
                         <button type='submit' className = 'form-create-button form-button-container' id = 'create'>Create</button>
                     </div>
                 </div>

@@ -18,6 +18,8 @@ import News_main_page from './components/News_page/News_main_page';
 import News_items_page from './components/News_page/News_items_page';
 import News_form from './components/News_page/News_form';
 import CreateNews from './components/News_page/CreateNews';
+import NewsCategory from "./components/News_page/NewsCategory";
+import CategoryManagement from "./components/News_page/CategoryManagement";
 function App() {
 
   return (
@@ -25,6 +27,8 @@ function App() {
       {/* <CreateNewPost></CreateNewPost> */}
       {/* <News_form></News_form> */}
       {/*<CreateNews></CreateNews>*/}
+      {/*<CategoryManagement/>*/}
+        <NewsCategory/>
     </div>
         // <div>
         //   <Router>

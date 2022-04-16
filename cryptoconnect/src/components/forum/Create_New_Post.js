@@ -116,7 +116,7 @@ export default function Create_New_Post(props) {
     // };
 
     return (
-        <div class="createpost">
+        // <div class="createpost">
         <div class="CreatePost">
             <div class='pt-3'>
                 <div class='card mb-4'>
@@ -262,6 +262,6 @@ export default function Create_New_Post(props) {
                 </div>
             </div>
         </div>
-        </div>
+        // </div>
     );
 }

@@ -15,11 +15,13 @@ import CreateNewPost from './components/forum/Create_New_Post'
 import PostDetail from './components/forum/PostDetailPage';
 
 import News_main_page from './components/News_page/News_main_page';
-import News_items_page from './components/News_page/News_items_page';
+import News_details_page from './components/News_page/News_details_page';
 import News_form from './components/News_page/News_form';
 import CreateNews from './components/News_page/CreateNews';
 import NewsCategory from "./components/News_page/NewsCategory";
-import CategoryManagement from "./components/News_page/CategoryManagement";
+import EditNews from "./components/News_page/EditNews";
+import EditPost from "./components/forms/EditPost";
+// import CategoryManagement from "./components/News_page/CategoryManagement";
 function App() {
 
   return (
@@ -28,7 +30,10 @@ function App() {
       {/* <News_form></News_form> */}
       {/*<CreateNews></CreateNews>*/}
       {/*<CategoryManagement/>*/}
-        <NewsCategory/>
+      {/*  <NewsCategory/>*/}
+        <News_details_page/>
+        {/*<EditNews/>*/}
+        {/*<EditPost/>*/}
     </div>
         // <div>
         //   <Router>

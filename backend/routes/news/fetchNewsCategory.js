@@ -1,15 +1,11 @@
-
-
 const router = require('express').Router();
 
-let News = require('../models/news');
+let Category = require('../models/news_category');
 
 router.route('/').get((req, res) => {
-    News.find()
-        .then(newses => res.json(newses))
+    Category.find()
+        .then(categories => res.json(categories))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
-
 
 module.exports = router

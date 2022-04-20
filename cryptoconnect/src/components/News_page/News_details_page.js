@@ -1,12 +1,12 @@
-import './News_items_page_css.css';
+import './News_details_page_css.css';
 import './News_items_css.css';
 import News_items from './News_items';
 
-export default function News_items_page(){
+export default function News_details_page(){
     const count = [1, 2, 3]
     return(
         <div>
-            <div class = "news_container">
+            <div class = "news_container" style={{paddingTop: '2%'}}>
                 <div class = "news_item_image"></div>
                 <div class = "news_header">
                     <div class = "news_header_text">Date</div>

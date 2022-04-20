@@ -63,8 +63,8 @@ export default class CreateNews extends Component {
         }
         console.log(news)
 
-        axios.post('http://localhost:3000', news)
-            .then(res => console.log(res.data));
+        // axios.post('http://localhost:3000', news)
+        //     .then(res => console.log(res.data));
     }
 
     render() {

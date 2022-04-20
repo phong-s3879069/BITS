@@ -17,7 +17,6 @@ import PostDetail from './components/forum/PostDetailPage';
 import News_main_page from './components/News_page/News_main_page';
 import News_details_page from './components/News_page/News_details_page';
 import News_form from './components/News_page/News_form';
-import CreateNews from './components/News_page/CreateNews';
 import NewsCategory from "./components/News_page/NewsCategory";
 import EditNews from "./components/News_page/EditNews";
 import EditPost from "./components/forms/EditPost";
@@ -31,10 +30,10 @@ function App() {
       {/*<CreateNews></CreateNews>*/}
       {/*<CategoryManagement/>*/}
       {/*  <NewsCategory/>*/}
-      {/*  <News_details_page/>*/}
+        <News_details_page/>
       {/*  <EditNews/>*/}
         {/*<EditPost/>*/}
-        <News_main_page/>
+        {/*<News_main_page/>*/}
     </div>
         // <div>
         //   <Router>

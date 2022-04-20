@@ -1,6 +1,6 @@
 import News_items from './News_items';
 import './News_main_page.css';
-import React from "react";
+import News_form from "./News_form";
 
 export default function News_main_page() {
     const count = [1, 2, 3, 4]
@@ -30,7 +30,8 @@ export default function News_main_page() {
                     </ul>
 
                 </div>
-                <button type='submit' className = 'create_button' id = 'create'>Add new news</button>
+                <div style={{float: 'right'}}><News_form/></div>
+
             </div>
             <div className="container">
                 <div className="row">

@@ -5,35 +5,52 @@ import axios from 'axios'
 
 export default function EditNews() {
     return(
-        // <div className= 'edit-container'>
-            <form>
-                <div className='edit-container'>
-                    <div className= 'edit-header'>Edit news</div>
-                    <div className = 'form-group' style={{backgroundColor: 'transparent'}}>
-                        <div className = 'edit-body-title'>TITLE</div>
-                        <textarea className = "form-control"  id='contentInput' rows="1" placeholder='Enter title'
-                        />
-                    </div>
-                    <div className = 'form-group' style={{backgroundColor: 'transparent'}}>
-                        <div className ='edit-category'>Category</div>
-                        <select className = 'form-control' style= {{width: '15%', marginBottom: '2%'}} id='categorySelect'>
-                            <option>Category 1</option>
-                            <option>Category 2</option>
-                            <option>Category 3</option>
-                            <option>Category 4</option>
-                        </select>
-                    </div>
-                    <div className = 'form-group' style={{backgroundColor: 'transparent'}}>
-                        <div className = 'edit-body-title'>BODY</div>
-                        <textarea className = "form-control" id='contentInput' rows="15" placeholder='Write something here'/>
-                    </div>
-                    <div className = 'form-group' style={{backgroundColor: 'transparent'}}>
-                        <input type='file' className = 'form-control-file edit-button-container' id='addImage' placeholder = 'Add image'/>
-                        <button type='submit' className = 'edit-create-button edit-button-container' id = 'create'>Edit</button>
-                        <button type='delete' className = 'edit-create-button edit-button-container' id = 'delete'>Delete</button>
+        <div>
+            <button type="button" className="form-create-button" data-bs-toggle="modal" data-bs-target="#editPost">
+                Edit
+            </button>
+            <div className="modal" id="editPost" aria-labelledby="editFunctionModel" aria-hidden="true" tabIndex="-1">
+                <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="container-fluid">
+                                <div className="row mb-3">
+                                    <h3 className="text-center">EDIT NEWS</h3>
+                                </div>
+                                <br/>
+                                <form>
+                                    <div className = 'form-container'>
+                                        <div className = 'form-group'>
+                                            <div className = 'form-body-title'>Title</div>
+                                            <textarea className="form-control"  id='contentInput' rows="1" placeholder='Enter title'/>
+                                        </div>
+                                        <div className = 'form-group'>
+                                            <div className='form-category'>Category</div>
+                                            <select className='form-control' style= {{width: '20%', marginBottom: '3%'}} id='categorySelect'>
+                                                <option>Category 1</option>
+                                                <option>Category 2</option>
+                                                <option>Category 3</option>
+                                            </select>
+                                        </div>
+                                        <div className = 'form-group'>
+                                            <div className = 'form-body-title'>Content</div>
+                                            <textarea className ="form-control" id='contentInput' rows="20" placeholder='Write something here'/>
+                                        </div>
+                                        <div className = 'form-group'>
+                                            <input type='file' className = 'form-control-file form-button-container' id='addImage' placeholder = 'Add image'></input>
+                                            <button type='submit' className = 'form-create-button form-button-container' id = 'create'>Edit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-        // </div>
+            </div>
+        </div>
     )
 }

@@ -1,8 +1,8 @@
 
 
 .form-container{
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .form-header{
@@ -13,13 +13,13 @@
     color: #c4c4c4;
 }
 .form-body-title{
-    font-size: 36px;
+    font-size: 100%;
     color: #c4c4c4;
 }
 
 
 .form-category{
-    font-size: 24px;
+    font-size: 100%;
     margin-top: 2%;
     margin-bottom: 2%;
     color: #c4c4c4;
@@ -39,10 +39,13 @@
     color: #c4c4c4;
 }
 .form-create-button{
-    width: 10%;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: fit-content;
     text-align: center;
     float: right;
-    background-color: #2f4b76; 
-    font-size: 24px;
+    background-color: black;
+    font-size: 150%;
     color: #c4c4c4;
+    border-radius: 20px;
 }  

@@ -34,6 +34,7 @@ function App() {
         <News_details_page/>
         {/*<EditNews/>*/}
         {/*<EditPost/>*/}
+        {/*<News_main_page/>*/}
     </div>
         // <div>
         //   <Router>

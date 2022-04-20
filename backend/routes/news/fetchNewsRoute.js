@@ -2,14 +2,8 @@
 
 const router = require('express').Router();
 
-let News = require('../models/news');
+import { getNewses, addNews} from "../../controllers/newsController/newsCRUD";
 
-router.route('/').get((req, res) => {
-    News.find()
-        .then(newses => res.json(newses))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-
-
+router.get('/', getNewses);
+router.post('/add', addNews)
 module.exports = router

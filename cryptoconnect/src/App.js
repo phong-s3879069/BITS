@@ -31,10 +31,10 @@ function App() {
       {/*<CreateNews></CreateNews>*/}
       {/*<CategoryManagement/>*/}
       {/*  <NewsCategory/>*/}
-        <News_details_page/>
-        {/*<EditNews/>*/}
+      {/*  <News_details_page/>*/}
+      {/*  <EditNews/>*/}
         {/*<EditPost/>*/}
-        {/*<News_main_page/>*/}
+        <News_main_page/>
     </div>
         // <div>
         //   <Router>

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const NewsSchema = new mongoose.Schema({
     title: String,
     content: String,
@@ -8,10 +9,15 @@ const NewsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "news_categories",
     },
+    date: {
+        type: mongoose.Schema.Types.Date,
+        default: new Date(),
+        ref: "date"
+    },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     }
 
 }, {timestamps: true});
-exports.news = mongoose.model('New', NewsSchema)
+exports.news = mongoose.model('News', NewsSchema)

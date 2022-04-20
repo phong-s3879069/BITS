@@ -1,7 +1,11 @@
 
+.whole_page{
+    background-color: #122540;
+    padding-bottom: 100%;
+}
 
 .news-main-page{
-    background-color: #122540;
+    background-color: transparent;
     margin-left: 210px;
     margin-right: 210px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -23,8 +27,8 @@
 }
 
 .tabs_container{
-    margin-left: 210px;
-    margin-right: 210px;
+    margin-left: 15%;
+    margin-right: 50%;
     height: 100%;
 }
 .tabs_items{
@@ -42,4 +46,13 @@
     font-family: 'Times New Roman', Times, serif;
     color: #FFF;
     background-color: black;
+}
+
+.create_button{
+    width: 10%;
+    text-align: center;
+    float: right;
+    background-color: #2f4b76;
+    font-size: 24px;
+    color: #c4c4c4;
 }

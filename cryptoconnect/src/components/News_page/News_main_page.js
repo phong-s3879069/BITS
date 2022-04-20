@@ -12,22 +12,25 @@ export default function News_main_page() {
                     <div className="news-descript">Catch up with the latest updates from around the world</div>
                 </div>
             </div>
-            {/* <div class="tabs_container"> */}
-            <div className="container d-flex justify-content-start">
-                <ul className="nav nav-pills mb-3 row" id="pills-tab" role="tablist">
-                    <div className="tabs_items col-sm">
-                        <div className="tabs_text">All</div>
-                    </div>
-                    <div className="tabs_items col-sm">
-                        <div className="tabs_text">Crypto</div>
-                    </div>
-                    <div className="tabs_items col-sm">
-                        <div className="tabs_text">Currency</div>
-                    </div>
-                    <div className="tabs_items col-sm">
-                        <div className="tabs_text">Stocks</div>
-                    </div>
-                </ul>
+            <div className= "tabs_container">
+                <div className="d-flex justify-content-start" style={{float: 'left'}}>
+                    <ul className="nav nav-pills mb-3 row" id="pills-tab" role="tablist">
+                        <div className="tabs_items col-sm">
+                            <div className="tabs_text">All</div>
+                        </div>
+                        <div className="tabs_items col-sm">
+                            <div className="tabs_text">Crypto</div>
+                        </div>
+                        <div className="tabs_items col-sm">
+                            <div className="tabs_text">Currency</div>
+                        </div>
+                        <div className="tabs_items col-sm">
+                            <div className="tabs_text">Stocks</div>
+                        </div>
+                    </ul>
+
+                </div>
+                <button type='submit' className = 'create_button' id = 'create'>Add new news</button>
             </div>
             <div className="container">
                 <div className="row">

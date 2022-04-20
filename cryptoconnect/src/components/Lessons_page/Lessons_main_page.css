@@ -1,4 +1,7 @@
-
+.lessons-main{
+    background-color: #122540;
+    padding-bottom: 100%;
+}
 .lessons-main-page{
     background-color: #122540;
 }
@@ -6,8 +9,13 @@
     height:100px;
     color:#FFF;
     text-align: center;
-    padding: 70px 0;
+    padding-bottom: 10%;
+    padding-top: 5%;
     margin-bottom: 100px;
+}
+.button{
+    margin-left: 83%;
+    margin-bottom: 2%;
 }
 .tabs_items{
     height: 100%;

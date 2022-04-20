@@ -1,0 +1,22 @@
+.delete{
+   width: 20%;
+   color: white;
+}
+.save{
+   margin-left: 80%;
+   width: 20%;
+   color: white;
+}
+.comment{
+    width: 90%;
+    margin-top: 3%;
+    margin-left:5%;
+    margin-right:5%;
+}
+.button-container{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color:#0b1a2f;
+}

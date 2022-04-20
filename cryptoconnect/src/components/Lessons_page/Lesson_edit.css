@@ -1,22 +1,56 @@
-.delete{
-   width: 20%;
-   color: white;
+.edit-container{
+    background-color: #0B1A2F;
+    border-radius: 2%;
+    margin: 20%;
+    padding: 1%;
 }
-.save{
-   margin-left: 80%;
-   width: 20%;
-   color: white;
+
+.edit-header{
+    margin-bottom: 2%;
+    text-align: center;
+    font-size: 150%;
+    color: #c4c4c4;
+    background-color: transparent;
+}
+.edit-body-title{
+    font-size: 100%;
+    color: #c4c4c4;
+    background-color: transparent;
+}
+
+
+.edit-category{
+    font-size: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: #c4c4c4;
+    background-color: transparent;
+}
+
+.edit-button-container{
+    margin-top: 1%;
+    background-color: transparent;
+    margin-bottom: 1%;
+}
+.edit-image-button{
+    width: 15%;
+    text-align: center;
+    float: left;
+    background-color: #2f4b76;
+    font-size: 100%;
+    color: #c4c4c4;
+}
+.edit-create-button{
+    width: 10%;
+    text-align: center;
+    float: right;
+    background-color: #2f4b76;
+    font-size: 100%;
+    color: #c4c4c4;
 }
 .comment{
     width: 90%;
     margin-top: 3%;
     margin-left:5%;
     margin-right:5%;
-}
-.button-container{
-    margin-left: 5%;
-    margin-right: 5%;
-    display: grid;
-    grid-template-columns: auto auto;
-    background-color:#0b1a2f;
 }

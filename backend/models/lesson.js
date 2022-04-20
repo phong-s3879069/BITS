@@ -6,7 +6,7 @@ var LessonSchema = new mongoose.Schema({
     image: String,
     lessons_category_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"news_lessons",
+        ref:"lessons_categories",
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -14,4 +14,4 @@ var LessonSchema = new mongoose.Schema({
     }
  
  },{timestamps: true})
- exports.news = mongoose.model('Lesson', NewsSchema)
+ exports.lessons = mongoose.model('Lesson', LessonSchema)

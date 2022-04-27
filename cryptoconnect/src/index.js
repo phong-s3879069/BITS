@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.css';
+=======
+import Footer from './Footer';
+>>>>>>> 8d5c37ee55b04003a7611438a07d10846cdaaf35
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
+);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Footer/>
+  </React.StrictMode>,
+  document.getElementById('root_html')
 );
 
 // If you want to start measuring performance in your app, pass a function

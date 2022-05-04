@@ -9,15 +9,18 @@ import App from './App';
 import { reducers } from './redux_BITS/reducers';
 import reportWebVitals from './reportWebVitals';
 import Footer from './Footer';
+import CryptoContext from './CryptoContext'
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
+  
   <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <CryptoContext>
       <App />
-    </Provider>
-
+    </CryptoContext>
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

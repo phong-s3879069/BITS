@@ -1,158 +1,21 @@
 import React from 'react';
-// import { useEffect, useState, useRef } from 'react';
-// import { useParams } from 'react-router';
 import Sidebar from './Sidebar';
-// import CreatePost from './CreatePost';
 import CommentSection from './Comment_Section';
-// import axios from 'axios';
-// import { useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import * as Yup from 'yup';
 import './Forum.css'
+import EditPost from '../forms/EditPost';
 
 
 // import { countTimeDiff } from '../../utils';
 
 const PostDetail = () => {
-  //    const [isEditing, setIsEditing] = useState(false);
-  //   const [file, setFile] = useState(null);
-  //   coonst [showCreatePostForm, setShowCreatePostForm] = useState(false);
-  //  const [title, setTitle] = useState('');
-  //   const [content, setContent] = useState('');
-  //   const [catId, setCatId] = useState([]);
-  //   const [cate, setCate] = useState('');
-  //   const { id } = useParams();
-  //   const currentTitle = useRef(title);
-  //   const currentContent = useRef(content);
-  //   const currentFile = useRef(file);
-  //   const endPoint = `http://localhost:9000/forums/posts/${id}`;
-  //   const [postDetail, setpostDetail] = useState({});
-  //   const currentUser = JSON.parse(localStorage.getItem('user'));
-
-    // useEffect(() => {
-    //     fetchPostDetail();
-    //     fetchPostComment();
-    //     getCat();
-    // }, []);
-
-    // const fetchUserInfo = (passId, oldData, setFunction) => {
-    //     fetch(`http://localhost:9000/profile/profiledetails/${passId}`)
-    //         .then((res) => res.json())
-    //         .then((dataProfile) =>
-    //             setFunction({ ...oldData, username: dataProfile.username })
-    //         );
-    // };
-    // const getCat = async () => {
-    //     try {
-    //         const res = await axios.get(
-    //             'http://localhost:9000/post_categories/'
-    //         );
-    //         console.log('ressssss', res);
-    //         const myCat = res?.data || {};
-    //         setCatId(myCat);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-    // {
-    //     /*Update Delete for Post*/
-    // }
-    // const handleDelete = async () => {
-    //     try {
-    //         await axios.delete(`http://localhost:9000/forums/posts/${id}`);
-    //         window.location.replace('/');
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-    // const handleEdit = () => {
-    //     if (isEditing) {
-    //         setIsEditing(false);
-    //     } else {
-    //         setIsEditing(true);
-    //     }
-    // };
-
-    // const handleUpdate = async (e) => {
-    //     e.preventDefault();
-    //     const updatedPost = {
-    //         title,
-    //         content,
-    //         image: file,
-    //         post_category_id: cate,
-    //     };
-    //     console.log(updatedPost);
-    //     if (file) {
-    //         const data = new FormData();
-    //         const fileName = Date.now() + file.name;
-    //         data.append('name', fileName);
-    //         data.append('file', file);
-    //         updatedPost.image = fileName;
-    //         console.log(updatedPost);
-    //     }
-    //     try {
-    //         await axios.put(
-    //             'http://localhost:9000/forums/posts/' + postDetail._id,
-    //             updatedPost
-    //         );
-    //         window.location.replace(
-    //             'http://localhost:3000/forum/post/postdetail/' + postDetail._id
-    //         );
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
-    // const fetchPostDetail = () => {
-    //     fetch(endPoint)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             fetchUserInfo(data.user_id, data, setpostDetail);
-    //         });
-
-    // };
-    // const [postCommentList, setPostCommentList] = useState([]);
-    // const fetchPostComment = () => {
-    //     fetch(`http://localhost:9000/forums/comment/${id}`)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             data.map(async (commentElement) => {
-    //                 let newElement = {};
-    //                 await fetch(
-    //                     `http://localhost:9000/profile/profiledetails/${commentElement.user_id}`
-    //                 )
-    //                     .then((res) => res.json())
-    //                     .then(
-    //                         (data) =>
-    //                         (newElement = {
-    //                             ...commentElement,
-    //                             username: data.username,
-    //                         })
-    //                     )
-    //                     .then((res) =>
-    //                         setPostCommentList((postCommentList) => [
-    //                             ...postCommentList,
-    //                             res,
-    //                         ])
-    //                     );
-    //             });
-    //         });
-    // };
 
     return (
         <div class='container-fluid PostDetail'>
             <div className='row'>
-                <div class='col-lg-4 ps-5 pe-5'>
-                    <Sidebar
-                        // showCreatePostForm={showCreatePostForm}
-                        // showForm={(showCreatePostForm) =>
-                        //     setShowCreatePostForm(showCreatePostForm)
-                        // }
-                    />
+                <div class='col'>
+    
                 </div>
-
-                <div class='col-lg-6'>
+                <div class="col-6">
                     {/* {showCreatePostForm && <CreatePost />} */}
                     <div class='row'>
                         <article class="detail-article">
@@ -256,27 +119,6 @@ const PostDetail = () => {
                                 ) : (null)
                                 } */}
                             </section>
-                            
-                            {
-                            // currentUser.id === postDetail.user_id && (
-                                <>
-                                    <button
-                                        type='button'
-                                        className='btn btn-danger delete-btn'
-                                        // onClick={handleDelete}
-                                    >
-                                        Delete
-                                    </button>
-                                    <button
-                                        type='button'
-                                        className='btn btn-secondary edit-btn'
-                                        // onClick={handleEdit}
-                                    >
-                                        Edit
-                                    </button>
-                                </>
-                            // )
-                            }
                             {/* {isEditing && (
                                 <button
                                     type='button'
@@ -290,6 +132,9 @@ const PostDetail = () => {
                         <hr class="sidebar-hr"/>
                         <CommentSection />
                     </div>
+                </div>
+                <div class='col'>
+    
                 </div>
             </div>
         </div>

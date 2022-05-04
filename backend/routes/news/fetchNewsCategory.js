@@ -1,11 +1,11 @@
-const router = require('express').Router();
-
-let Category = require('../models/news_category');
-
-router.route('/').get((req, res) => {
-    Category.find()
-        .then(categories => res.json(categories))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-module.exports = router
+// import {getNewses} from "../../controllers/newsController/newsCRUD";
+//
+// const router = require('express').Router();
+//
+//
+// import {getNewsCategory} from "../../controllers/newsController/categorizeNews";
+//
+//
+// router.get('/', getNewsCategory);
+//
+// module.exports = router

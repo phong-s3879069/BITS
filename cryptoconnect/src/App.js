@@ -10,54 +10,50 @@ import Table_of_other_coins from './components/coin_item/Table_of_other_coins';
 import Navbar from './Navbar';
 import Homepage from './Homepage';
 import Profile_page from './components/profile_page/Profile_page';
-// // <<<<<<< hien_2
-// import ForumPage from './components/forum/Forum_Page';
-// import CreateNewPost from './components/forum/Create_New_Post'
-// import PostDetail from './components/forum/PostDetailPage';
-// function App() {
-//   return (
-//     <div>
-//       <Router>
-//         <div>
-//           <Navbar/>
-//         </div>
-//         <div>
-//           <Routes>
-//             <Route exact path="/" element={<Homepage/>}/>
-//             <Route exact path="/mainpage" element={<MainPage/>} />
-//             <Route exact path="/profile" element={<Profile_page/>}/>
-//             <Route exact path="/forum" element={<ForumPage/>}/>
-//             <Route exact path="/create_post" element={<CreateNewPost/>}/>
-//             <Route exact path="/post_detail" element={<PostDetail/>}/>
-
-//           </Routes>
-//         </div>
-//       </Router>
-// =======
 import News_main_page from './components/News_page/News_main_page';
-function App() {
-  return (
-    <div className="App">
-      <News_main_page></News_main_page>
-// >>>>>>> main
-    </div>
-    
-    // <div>
-    //   <Router>
-    //     <div>
-    //       <Navbar/>
-    //     </div>
-    //     <div>
-    //       <Routes>
-    //         <Route exact path="/" element={<Homepage/>}/>
-    //         <Route exact path="/mainpage" element={<MainPage/>} />
-    //         <Route exact path="/profile" element={<Profile_page/>}/>
-    //       </Routes>
-    //     </div>
-    //   </Router>
-    // </div>
-  );
-}
 
-export default App;
+import ForumPage from './components/forum/Forum_Page';
+import CreateNewPost from './components/forum/Create_New_Post'
+import PostDetail from './components/forum/PostDetailPage';
+
+import {makeStyles} from '@material-ui/core' //Material UI
+import Chosen_coins from './components/coin_item/chosen_coin';
+
+require("regenerator-runtime/runtime");
+
+export default function App() {
+
+  const useStyles = makeStyles(() => ({
+    App: {
+      minHeight: "100vh",
+      
+    },
+  }))
+  const classes = useStyles()
+  return (
+    <div>
+      
+      <Router>
+        <div>
+          <Navbar/>
+        </div>
+        <div className={classes.App}>
+          <Routes>
+            <Route exact path="/" element={<Homepage/>}/>
+            
+            <Route exact classname={classes.MainPage} path="/mainpage" element={<MainPage/>} />
+            <Route exact path="/profile" element={<Profile_page/>}/>
+            <Route exact path="/forum" element={<ForumPage/>}/>
+            <Route exact path="/create_post" element={<CreateNewPost/>}/>
+            <Route exact path="/post_detail" element={<PostDetail/>}/>
+            <Route exact path="/news" element={<News_main_page/>}/>
+            <Route exact path="/chosen_coin/:id" element={<Chosen_coins/>}/>
+            
+          </Routes>
+        </div>
+      </Router>
+    </div>
+  )
+
+  }
 

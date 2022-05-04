@@ -1,7 +1,6 @@
-* {
+/* * {
   /* color: white; */
-  /* background-color: #122540; */
-}
+  /* background-color: #122540; * */
 #flw-btn {
   float: right;
 }
@@ -58,6 +57,7 @@
 .PostDetail {
   background-color: #122540;
   color: white;
+  margin-top: 4%;
 }
 
 .PostDetail .cat-button {
@@ -84,9 +84,5 @@
 
 .CommentSection .card {
   border: none;
-}
-
-.CommentSection .comment-btn {
-  margin-right: 3%;
 }
 

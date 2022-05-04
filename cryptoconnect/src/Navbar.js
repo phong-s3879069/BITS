@@ -1,7 +1,14 @@
 import './Navbar.css';
 import { makeStyles, AppBar, Container, Toolbar, Typography, Select, MenuItem, createTheme } from "@material-ui/core";
 import { CryptoState } from './CryptoContext';
+import 'bootstrap/js/dist/carousel'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from './redux_BITS/actions/user';
 export default function Navbar() {
+  const {authData, role} = useSelector((state) => state.authReducer)
+    console.log(authData)
+    console.log(role)
+    const dispatch = useDispatch()
 	const useStyles = makeStyles(() => ({
 		Navbar: {
 			
@@ -22,49 +29,42 @@ export default function Navbar() {
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link" href="#">Market</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">News</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Forum</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">More</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Lessons</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Contact</a>
-							</li>
+						<a class="nav-link" href="/mainpage">Market</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/news_page">News</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/forum">Forum</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">More</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/lessons_page">Lessons</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
 						</ul>
-						<ul class="nav navbar-nav ms-auto">
-							<li class="nav-item">
-								<a class="nav-link" href="#"><span class="fas fa-user"></span> Sign Up</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Login</a>
-							</li>
-							<div className="dropdown">
-								<a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle p-1 rounded-pill" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" role="button" style={{ backgroundColor: '#fda47e' }}>
-									<img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" alt="" width="32" height="32" class="rounded-circle me-2" />
-									<strong>Username</strong>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser2" data-popper-placement="top-end">
+						{role ? <ul class="nav navbar-nav ms-auto"> <div className="dropdown">
+                                <a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle p-1 rounded-pill" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                                    <img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" alt="" width="32" height="32" class="rounded-circle me-2" />
+                                    <strong>{authData?.username}</strong>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser2" data-popper-placement="top-end">
+                                    {role.map((element) => element == 'admin' && <li><a class="dropdown-item" href="/addadmin">Add Admin</a></li>)}
+                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/" onClick={() => dispatch(logout())}>Sign out</a></li>
+                                </ul>
+                            </div> </ul> : <ul class="nav navbar-nav ms-auto"><li class="nav-item">
+								<a class="nav-link" href="/login" style={{ color: '#F0F8FF' }}>Login</a>
 
-
-									<li><a class="dropdown-item" href="/addfunction">Add New Function</a></li>
-									<li><a class="dropdown-item" href="/addadmin">Add Admin</a></li>
-									<li><a class="dropdown-item" href="/profile">Profile</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item" href="/">Sign out</a></li>
-								</ul>
-							</div>
-
-
-						</ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/signup" style={{ color: '#FFA07A' }}>Sign Up</a>
+                </li></ul>}
 						<Toolbar>
 							<Select
 								variant="outlined"

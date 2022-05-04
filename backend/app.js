@@ -5,11 +5,16 @@ require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const auth = require('./routes/signUpLogin/auth')
+// const verifyEmail = require('./routes/signUpLogin/verifyEmail');
+// const verifyResetLink = require('./routes/signUpLogin/getResetLink');
+
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 
-//"mongodb+srv://giangle:mypassword@cluster0.sfxdv.mongodb.net/furtherweb"
-//"mongodb+srv://myuser:mypassword@cluster0.1lbnn.mongodb.net/testdb"
+app.use('/auth', auth);
+// app.use('/', verifyEmail);
+// app.use('/', verifyResetLink);
 
 
 module.exports = app;

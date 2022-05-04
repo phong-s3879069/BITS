@@ -9,7 +9,7 @@ export default function Homepage() {
     return (
         <div>
             <section>
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleCaptions" class="carousel-slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -19,36 +19,36 @@ export default function Homepage() {
                         <div class="carousel-item active">
 
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="animated fadeInDown">Chat. Trade. Learn. Repeat</h5>
-                                <p class="animated fadeInUp">Lorum</p>
-                                <p class="animated fadeInUp"><a href="#">Appoint</a></p>
+                                <h5 class="animated fadeInDown"></h5>
+                                <p class="animated fadeInUp"></p>
+                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
                             </div>
                         </div>
                         <div class="carousel-item">
 
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="animated fadeInDown">News about Cryptocurrency</h5>
-                                <p class="animated fadeInUp">Lorum</p>
-                                <p class="animated fadeInUp"><a href="#">Appoint</a></p>
+                                <h5 class="animated fadeInDown"></h5>
+                                <p class="animated fadeInUp"></p>
+                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
                             </div>
                         </div>
                         <div class="carousel-item">
 
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="animated fadeInDown">Feel free to ask</h5>
-                                <p class="animated fadeInUp">Lorum</p>
-                                <p class="animated fadeInUp"><a href="#">Appoint</a></p>
+                                <h5 class="animated fadeInDown"></h5>
+                                <p class="animated fadeInUp"></p>
+                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    {/* <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
-                    </button>
+                    </button> */}
                 </div>
                 <section> 
                     <div class="video">
@@ -65,7 +65,7 @@ export default function Homepage() {
                 <div className="text-center ms-5 me-5">
                     <p>Update real-time Cryptocurrency Price</p>
                     <div>
-                        <img src={chattraderepeat} class="img-fluid rounded" alt="..." />
+                    <img src={chattraderepeat} class="figure-img img-fluid rounded" alt="..."/>
                     </div>
                 </div>
             </section>

@@ -302,8 +302,9 @@ export default function CoinsTable() {
                           <img
                             src={row?.image}
                             alt={row.name}
-                            height="50"
-                            style={{ marginBottom: 10 }}
+                            // height="100%"
+                            // width="100%"
+                            style={{ marginBottom: 10, height: "20%", width: "20%"}}
                           />
                           <div
                             style={{ display: "flex", flexDirection: "column" }}

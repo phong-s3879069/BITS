@@ -63,8 +63,7 @@ export default function Carousel() {
         <img
           src={coin?.image}
           alt={coin.name}
-          height="80"
-          style={{marginBottom: 10}}
+          style={{marginBottom: 10, height:"20%", width: "20%"}}
         />
         <span>
           {coin?.symbol}

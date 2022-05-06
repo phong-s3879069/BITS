@@ -1,14 +1,19 @@
-.video{
+video{
     position: absolute;
     top:50%;
     left:50%;
-    width: auto;
+    width: 100%;
     height: auto;
     z-index: 0; 
     transform: translateX(-50%) translateY(-50%);
 }
 
+.carousel-slide{
+    margin: auto;
+}
+
 .carousel-item{
+    
     height: 100vh;
     min-height: 300px;
 }
@@ -43,5 +48,15 @@
     color: #fff;
     margin-top: 15px;
     border-radius: 5px;
+}
+
+/* .aftervideo {
+    margin: auto;
+    color: white;
+} */
+
+img {
+    width: 80%;
+    margin-top: 5%;
 }
 

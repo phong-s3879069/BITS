@@ -1,120 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 import './Forum.css';
 
 export default function Create_New_Post(props) {
-    // const validationSchema = Yup.object().shape({
-    //     title: Yup.string()
-    //         .required('Title is required')
-    //         .matches(
-    //             /^[a-zA-Z0-9 ?.$'"-_()@!%*#?&\/\\]+$/,
-    //             'Title cannot contain certain special characters'
-    //         ),
-    //     content: Yup.string()
-    //         .required('Content is required')
-    //         .matches(
-    //             /^[a-zA-Z0-9 ?,.$'"-:+_()@!%*#?&\/\\(\r\n|\r|\n)]+$/,
-    //             'Content cannot contain certain special characters. Be careful with apostrophe. The valid one is " \' "'
-    //         ),
-    //     image: Yup.mixed()
-    //         .test('fileSize', 'The file is too large', (value) => {
-    //             if (!value.length) {
-    //                 return true; // attachment is optional
-    //             }
-    //             return value[0].size <= 2000000;
-    //         })
-    //         .test('fileType', 'Only jpeg/png file is accepted', (value) => {
-    //             if (!value.length) {
-    //                 return true; // attachment is optional
-    //             }
-    //             return (
-    //                 value[0].type === 'image/jpeg' ||
-    //                 value[0].type === 'image/png'
-    //             );
-    //         }),
-    //     cat: Yup.string().test('value', 'Category is required', (value) => {
-    //         if (value === '0') {
-    //             return false;
-    //         }
-    //         return true;
-    //     }),
-    // });
-    // const {
-    //     register,
-    //     handleSubmit,
-    //     reset,
-    //     formState: { errors },
-    // } = useForm({
-    //     resolver: yupResolver(validationSchema),
-    // });
-
-    // const [title, setTitle] = useState('');
-    // const [content, setContent] = useState('');
-    // const [id, setId] = useState('');
-    // const [file, setFile] = useState(null);
-    // const [cat, setCat] = useState([]);
-    // const currentUser = JSON.parse(localStorage.getItem('user'));
-
-    // useEffect(() => {
-    //     getCat();
-    // }, []);
-
-    // const getCat = async () => {
-    //     try {
-    //         const res = await axios.get(
-    //             'http://localhost:9000/post_categories/'
-    //         );
-    //         console.log('ressssss', res);
-    //         const myCat = res?.data || {};
-    //         setCat(myCat);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
-    // const submit = async (e) => {
-    //     const newPost = {
-    //         title,
-    //         content,
-    //         image: file,
-    //         post_category_id: id, 
-    //         user_id: currentUser.id,
-    //     };
-
-    //     if (file) {
-    //         const data = new FormData();
-    //         const fileName = Date.now() + file.name;
-    //         data.append('name', fileName);
-    //         data.append('file', file);
-    //         newPost.image = fileName;
-    //         console.log(newPost);
-    //         try {
-    //             await axios.post('http://localhost:9000/forums/upload', data);
-    //         } catch (err) {}
-    //     }
-
-    //     try {
-    //         await axios.post('http://localhost:9000/forums/posts', newPost);
-    //         window.location.reload();
-    //     } catch (err) {}
-
-    //     //Recommend nên dùng formdata.append cho mấy cái properties còn lại luôn, rồi xong post cái formdata thôi
-    //     // const data = new FormData();
-    //     // data.append("title", e.title)
-    //     // data.append("content", e.content)
-    //     // data.append("image", e.image[0])
-    //     // data.append("post_category_id", e.category)
-    //     // data.append("user_id", ???) // Lấy từ props, pass data từ app.js
-
-    //     // try {
-    //     //     await axios.post('http://localhost:9000/forums/posts', data);
-    //     //     window.location.reload();
-    //     // } catch (err) {}
-    // };
-
     return (
         // <div class="createpost">
         <div class="CreatePost">
@@ -170,7 +58,8 @@ export default function Create_New_Post(props) {
                                             // onChange={(e) =>
                                             //     setId(e.target.value)
                                             // }
-                                            class="form-control" id="exampleInputEmail1"
+                                            class="form-control" 
+                                            // id="exampleInputEmail1"
                                         >
                                             <option selected>
                                                 Choose Category
@@ -209,7 +98,7 @@ export default function Create_New_Post(props) {
                                     //     errors.content ? 'is-invalid' : ''
                                     // }`}
                                     placeholder='Post Content'
-                                    id= 'postcontent'
+                                    // id= 'postcontent'
                                     // {
                                     //     ...register('content')}
                                     // onChange={(e) => {

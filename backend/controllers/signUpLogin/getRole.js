@@ -1,12 +1,17 @@
-exports.publicAccess = (req, res) => {
-    res.send({isPublic: true})
-}
+var User = require('../../models/user').user;
 exports.userAccess = (req, res) => {
-    res.send({isUser: true})
-}
-exports.reporterAccess = (req, res) => {
-    res.send({isReporter: true})
+    User.findById({_id: req.user.id},['-password'], function (error, data){
+        if(error){
+            console.log(error)
+        }
+        res.send({isUser: true, userInfo: data})
+    })
 }
 exports.adminAccess = (req, res) => {
-    res.send({isAdmin: true})
+    User.findById({_id: req.user.id}, ['-password'], function (error, data){
+        if(error){
+            console.log(error)
+        }
+        res.send({isAdmin: true, userInfo: data})
+    })
 }

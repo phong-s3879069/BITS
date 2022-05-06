@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cryptocurrency from "../main_page/Cryptocurrency";
+
 
 
 export default function FavouriteCoins() {
@@ -25,7 +25,9 @@ export default function FavouriteCoins() {
                 <tbody>
                     {count.map((count) => {
                         return (
-                            <Cryptocurrency/>   
+                            <div>
+                                hi
+                            </div>
                         )
                     })}
                     

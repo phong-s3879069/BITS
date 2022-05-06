@@ -22,7 +22,7 @@ export default function Sidebar({post_categories}) {
                     {post_categories && post_categories.map(element => {
                         return (
                             <li class="nav-item">
-                            <a href={`forums/getPost/${element._id}`} class="nav-link text-light" aria-current="page">
+                            <a href={`${element._id}`} class="nav-link text-light" aria-current="page">
                                 <svg class="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
                                 {element.name}
                             </a>

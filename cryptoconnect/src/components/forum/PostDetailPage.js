@@ -38,8 +38,8 @@ const PostDetail = () => {
     //         dataArray.append("images", commentData.images, { type: 'image/jpeg' });
     //     }
 
-    //     dispatch(addComment(dataArray));
-
+    //     dispatch(addComment(dataAr
+    
     //     console.log(commentData.images);
     //     // window.location.replace("/postdetail")
     // }

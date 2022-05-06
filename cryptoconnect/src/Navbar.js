@@ -35,7 +35,7 @@ export default function Navbar() {
 						<a class="nav-link" href="/news_page">News</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/forum">Forum</a>
+						<a class="nav-link" href="/forums/6273a717967fd79763faa5f5">Forum</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">More</a>
@@ -49,8 +49,8 @@ export default function Navbar() {
 						</ul>
 						{role ? <ul class="nav navbar-nav ms-auto"> <div className="dropdown">
                                 <a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle p-1 rounded-pill" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                                    <img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" alt="" width="32" height="32" class="rounded-circle me-2" />
-                                    <strong>{authData?.username}</strong>
+                                    <img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" alt="" width="10px" height="60px" class="rounded-circle me-2" />
+                                    <strong class="text-white">{authData?.username}</strong>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser2" data-popper-placement="top-end">
                                     {role.map((element) => element == 'admin' && <li><a class="dropdown-item" href="/addadmin">Add Admin</a></li>)}

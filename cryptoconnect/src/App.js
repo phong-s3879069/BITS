@@ -35,7 +35,7 @@ export default function App() {
   const useStyles = makeStyles(() => ({
     App: {
       minHeight: "100vh",
-      
+      backgroundColor:"#0B1A2F",
     },
   }))
   const classes = useStyles()
@@ -50,7 +50,7 @@ export default function App() {
             <Route exact path="/" element={<Homepage/>}/>
             <Route exact classname={classes.MainPage} path="/mainpage" element={<MainPage/>} />
             <Route exact path="/profile" element={<Profile_page/>}/>
-            <Route exact path="/forum" element={<ForumPage/>}/>
+            <Route exact path="/forums/:post_category_id" element={<ForumPage/>}/>
             <Route exact path="/create_post" element={<CreateNewPost/>}/>
             <Route exact path="/post_detail" element={<PostDetail/>}/>
             <Route exact path="/lessons_page" element={<Lessons_main_page/>}/>

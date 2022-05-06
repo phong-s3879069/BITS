@@ -1,9 +1,49 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import * as moment from 'moment'
+import { addComment } from "../../redux_BITS/actions/post";
 import EditComment from '../forms/EditComment';
 import './Forum.css'
 
 export default function Comment_Section() {
+  const validationSchema = Yup.object().shape({
+    content: Yup.string().trim()
+        .required('Content is required')
+        .matches(
+            /^[a-zA-Z0-9 ?,.$'"-:+_();@!%*#?&\/\\(\r\n|\r|\n)]+$/,
+            'Content cannot contain certain special characters. Be careful with apostrophe. The valid one is " \' "'
+        ),
+    images: Yup.mixed()
+
+        .test('fileSize', 'The file is too large', (value) => {
+            if (!value.length) {
+                return true; // attachment is optional
+            }
+            return value[0].size <= 2000000;
+        })
+        .test('fileType', 'Only jpeg/png file is accepted', (value) => {
+            if (!value.length) {
+                return true; // attachment is optional
+            }
+            return (
+                value[0].type === 'image/jpeg' ||
+                value[0].type === 'image/png'
+            );
+        }),
+});
+const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+} = useForm({
+    resolver: yupResolver(validationSchema),
+});
   return (
     <div>
       <section class="CommentSection">

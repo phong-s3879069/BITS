@@ -15,7 +15,10 @@ export default function Chosen_coins() {
     Coin: {
       paddingTop: "5%",
       backgroundColor: "#0B1A2F",
-      paddingBottom: "5%"
+      paddingBottom: "5%",
+      textAlign: "center",
+      fontSize: "20px",
+      color: "white"
 
     },
   }))

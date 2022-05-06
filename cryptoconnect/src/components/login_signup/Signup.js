@@ -1,8 +1,9 @@
-import mail_download from './mail-download.gif';
+import loginNsignup from '../../assets/loginNsignup.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import './form.css'
 import { signUp } from '../../redux_BITS/actions/user';
 
 
@@ -66,13 +67,13 @@ export default function Signup() {
         resolver: yupResolver(validationSchema),
     });
     return (
-        <div style={{ marginTop: "110px", marginBottom: 80 }}>
+        <div style={{  height: "100%", backgroundColor:"#0B1A2F", textAlign: "center",fontSize: "20px", color: "white" }}>
             <div class="d-flex align-items-center h-100">
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-lg-6 col-sm-8 col-10">
-                            <div style={{ marginLeft: '35%' }}>
-                                <img className='mb-4 mx-auto' src={mail_download} alt='Web Logo' width='45%' height='45%' />
+                            <div>
+                                <img className='mb-4 mx-auto' src={loginNsignup} alt='Web Logo' width='45%' height='45%' />
                             </div>
                             <h2 class="mb-3 mt-10 text-center">SIGN UP</h2>
                             <form onSubmit={handleSubmit(signup)}>

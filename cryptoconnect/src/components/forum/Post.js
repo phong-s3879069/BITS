@@ -1,161 +1,87 @@
+import * as moment from 'moment'
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { dislike, like } from '../../redux_BITS/actions/post'
+
 import './Forum.css'
 
-export default function Post(props) {
-    // const new_like = "http://localhost:9000/vote/addvote"
-    // const dislike = "http://localhost:9000/vote/deletevote"
-    // const [liked, setLiked] = useState(false)
-    // const [numberOfVotes, setnumberOfVotes] = useState()
-    // const [user, setUser] = useState()
-    // const [followState, setFollowState] = useState(false)
-    // const currentUser = JSON.parse(localSt.getItem("user"))
+export default function Post({ post }) {
+  const { authData, role } = useSelector((state) => state?.authReducer)
+  const [isLiked, setIsLiked] = useState(false)
+  const [voteCount, setVoteCount] = useState(0)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    setVoteCount(post?.votes.length)
+  }, [])
+  useEffect(() => {
+    if (post?.votes.includes(authData?._id)) {
+      setIsLiked(true)
+    }
+  }, [authData])
+  return (
+    <div class="card mb-4 mt-3 Post">
 
-    // useEffect(() => {
-    //     if(props.isUser && props.element.vote.includes(currentUser.id)){
-    //       setLiked(true)
-    //     }
-    // }, [props.element.vote, props.isUser])
-
-    // const follow = () => {
-    //   fetch(`http://localhost:9000/user/${currentUser.id}/follow`, {
-    //     method: 'PUT',
-    //      headers: {
-    //        'Content-Type': 'application/json'
-    //      },
-    //      body: JSON.stringify({id: props.element.user_id})
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => setUser(data))
-    // }
-
-    // const unFollow = () => {
-    //   fetch(`http://localhost:9000/user/${currentUser.id}/unfollow`, {
-    //     method: 'PUT',
-    //      headers: {
-    //        'Content-Type': 'application/json'
-    //      },
-    //      body: JSON.stringify({id: props.element.user_id})
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setUser(data)
-    //   })
-    // }
-
-    // const create_like = (post_id) => {
-    //   fetch(new_like, {
-    //     method: 'PUT',
-    //      headers: {
-    //        'Content-Type': 'application/json'
-    //      },
-    //      body: JSON.stringify({ post_id: post_id, user_id: currentUser.id})
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log("VOTE DATA" + JSON.stringify(data))
-    //     setnumberOfVotes(data)})
-    // }
-
-    // const dis_like = (post_id) => {
-    //   fetch(dislike, {
-    //     method: 'PUT',
-
-    //      headers: {
-
-    //        'Content-Type': 'application/json'
-
-    //      },
-
-    //      body: JSON.stringify({ post_id: post_id, user_id: currentUser.id})
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {setnumberOfVotes(data)})
-    // }
-
-    // useEffect(() => {
-    //   var followers = props.element.followers
-    //   if (currentUser != null && followers && followers.includes(currentUser.id) ) {
-    //     setFollowState(true)
-    //   }
-    // }, [props.element.followers])
-
-    return (
-      <div class="card mb-4 mt-3 Post">
-        
-        <div class="card-header text-muted" 
-        // id={props.element._id}
-        >
-          <div>
+      <div class="card-header text-muted"
+      >
+        <div>
           <a
-            // href={`/profile/${props.element.user_id}`}
-            // style={{ "text-decoration": "none", color: "black" }}
-          >
-            Posted by: 
-            {/* {props.element.username ? props.element.username : props.username}&nbsp;&nbsp; */}
+            href={`/profile/${post?.user_id}`}
+            style={{ "text-decoration": "none", color: "white" }}>
+            Posted by: {post?.users[0].name}@{post?.users[0].username}
           </a>
-          {/* {props.createdAt}
-          {props.isProfilePage ? "" : (props.isUser && currentUser.id !== props.element.user_id ?<button id="flw-btn" type="button" class="btn btn-primary float-right"
-          style={currentUser != null && followState ? {background: "grey"} : {}} 
-          onClick={currentUser != null && (followState ? () => {setFollowState(false); unFollow();} : () => {setFollowState(true); follow();})}>
-              {followState ? "Unfollow" : "Follow"}
-          </button> : "")} */}
-          </div>
-          <span class="pull-right">
-            {/* &nbsp;&nbsp; */}
-            </span>
-          </div>
-          <a
-            // href={`/forum/post/postdetail/${props.element._id}`}
-            style={{ "textDecoration": "none", color: "black" }}
-          >
-          <div class="card-body">
-            <h3 class="card-title text-light">
-              {/* {props.element.title}  */}
-              Title
-            </h3>
-            <p class="class-text text-light">
-              {/* {props.element.content} */}
-              This is the content of the post
-              This is the content of the post
-              This is the content of the post
-              </p>
-          </div>
-          <div class="img">
-            <img
-              class="card-img-bottom img-fluid post-img mx-auto d-block"
-              src="https://media.istockphoto.com/photos/bitcoin-picture-id1145592947?k=20&m=1145592947&s=612x612&w=0&h=2Dwg5QPGB-UljX35NY6jj1OzIpx3oycyHZUvElMEgkM="
-              alt="post-image"
-              
-            />
-          </div>
-        </a>
-
-        <div class="card-footer text-muted">
-          <span>
-            <span 
-            // style={props.isUser && liked ? {color: "#0d6efd" } : {}} 
-            // onClick= {props.isUser && (liked ? () => {setLiked(false); dis_like(props.element._id)} : () => {setLiked(true); create_like(props.element._id)})}
-            >
-              <i
-                class="fa fa-thumbs-up hover-icon vote-button w3-large"
-                id="post-{{$post->id}}-up"
-                value="0"
-              ></i>
-            </span>
-            <span class="numberOfLikes ms-2">
-              {/* {numberOfVotes ? numberOfVotes.vote.length : props.element.vote.length}  */}
-              Likes
-            </span>
+          <span class="float-end">
+            {moment(post?.createdAt).fromNow()}
           </span>
-          {/* &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; */}
-          <a>
-            <i class=" fas fa-comment hover-icon w3-large"></i>
-            Comment
-          </a>
-          {/* &nbsp;&nbsp;&nbsp;&nbsp; */}
         </div>
       </div>
-    );
+      <a href={`/postdetail/${post._id}`} style={{ "textDecoration": "none", color: "black" }}>
+        <div class="card-body">
+          <h3 class="card-title text-light">
+            {post?.title}
+            Title
+          </h3>
+          <p class="class-text text-light">
+            {post?.content && post?.content && post?.content.length > 400
+              ? post?.content.substring(0, 399) + '......'
+              : post?.content}
+          </p>
+        </div>
+        <div class="img">
+          <img
+            class="card-img-bottom img-fluid post-img mx-auto d-block"
+            src={`https://cryptoconnect.s3.amazonaws.com/${post?.images}`}
+            alt="post-image"
+
+          />
+        </div>
+      </a>
+
+      <div class="card-footer">
+        <span class='mt-2' style={isLiked ? { color: "#0d6efd" } : { color: 'white' }} onClick={() => {
+          if (role) {
+            if (!isLiked) {
+              dispatch(like(post?._id, authData?._id))
+              setVoteCount(voteCount + 1)
+            } else {
+              dispatch(dislike(post?._id, authData?._id))
+              setVoteCount(voteCount - 1)
+            }
+            setIsLiked(!isLiked);
+          }
+        }}>
+          <i class="bi bi-hand-thumbs-up"></i>
+          <span class="numberOfLikes p-2 bd-highlight" >
+            {voteCount} Likes
+          </span>
+        </span>
+        <span class="numberOfLikes p-2 bd-highlight">
+          <a href={`/postdetail/${post?._id}`} style={{ "textDecoration": "none", color: "white" }}><i class="bi bi-reply"></i> <span className='ms-2'>Replies</span></a>
+        </span>
+        {/* </span> */}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  );
   ;
- 
+
 }

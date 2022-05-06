@@ -2,7 +2,7 @@ var commentModel = require('../../models/comment').comment;
 var { uploadFile, deleteFile  } = require('../s3')
 
 var mongoose = require('mongoose');
-const bucketName = "csfunctions-web-app/commentUploads"
+const bucketName = "cryptoconnect/commentUploads"
 
 exports.addComment = function (req, res) {
 
@@ -15,9 +15,9 @@ exports.addComment = function (req, res) {
         commentModel.create({
             
             images: 'commentUploads/' + req.file.filename + '.' + req.file.mimetype.split('/')[1],
-            post_id: mongoose.Types.ObjectId('6252e53f740cf90f3b30b92f'),
+            post_id: req.body.post_id,
             content: req.body.content,
-            user_id: mongoose.Types.ObjectId('6252e53f740cf90f3b30b92f')
+            user_id: req.body.user_id
 
         }, async function (err, result) {
 
@@ -34,9 +34,9 @@ exports.addComment = function (req, res) {
     } else {
 
         commentModel.create({
-            post_id: mongoose.Types.ObjectId('6252e53f740cf90f3b30b92f'),
+            post_id: req.body.post_id,
             content: req.body.content,
-            user_id: mongoose.Types.ObjectId('6252e53f740cf90f3b30b92f')
+            user_id: req.body.user_id
         }, function (err, result) {
             if (err) {
                 console.log(err)

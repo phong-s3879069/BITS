@@ -1,4 +1,4 @@
-import mail_download from './mail-download.gif';
+import loginNsignup from '../../assets/loginNsignup.png';
 import { set, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,15 +24,15 @@ export default function Login() {
         dispatch(login(data))
     };
     return (
-        <div style={{ marginTop: "150px", marginBottom: 80 }}>
-            <div class="d-flex align-items-center h-100">
+        <div style={{ height: "100%",backgroundColor: "#0B1A2F", textAlign: "center",fontSize: "20px", color: "white"}}>
+            <div class="d-flex align-items-center">
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-lg-6 col-sm-8 col-10">
-                            <div style={{ marginLeft: '35%' }}>
+                            <div>
                                 <img
                                     className='mb-4 mx-auto'
-                                    src={mail_download}
+                                    src={loginNsignup}
                                     alt='Web Logo'
                                     width='45%'
                                     height='45%'

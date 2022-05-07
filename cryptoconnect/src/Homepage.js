@@ -7,7 +7,7 @@ import market from "./assets/market.png";
 import './Homepage.css';
 export default function Homepage() {
     return (
-        <div>
+        <div class="HomePage">
             <section>
                 <div id="carouselExampleCaptions" class="carousel-slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">

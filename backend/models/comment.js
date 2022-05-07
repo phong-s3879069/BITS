@@ -4,11 +4,11 @@ const CommentSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "posts"
     },
-    users_id: {
+    user_id: {
         type: mongoose.Types.ObjectId,
         ref: "users"
     },
-    content: String,
-    images: String
+    content: String
+    // images: String
 }, {timestamps: true});
 exports.comment = mongoose.model('Comment', CommentSchema);

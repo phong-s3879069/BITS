@@ -7,7 +7,7 @@ export default function FavouriteCoins() {
 
     const [clicked, setClicked] = useState(false);
     return (
-        <div>
+        <div class="text-white">
             <div class="container">
             <table class="table">
                 <thead>

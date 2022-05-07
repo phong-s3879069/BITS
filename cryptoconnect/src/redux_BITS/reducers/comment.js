@@ -1,7 +1,9 @@
-import { FETCH_COMMENT_FOR_POST, ADD_COMMENT, UPDATE_COMMENT, DELETE_COMMENT } from "../constants/actionTypes";
+import { FETCH_COMMENT_FOR_POST, ADD_COMMENT, UPDATE_COMMENT, DELETE_COMMENT, FETCH_COMMENT_FOR_POST_INCLUDING_AVA } from "../constants/actionTypes";
 export default (comments = [], action) => {
     switch (action.type) {
         case FETCH_COMMENT_FOR_POST:
+            return action.payload;
+        case FETCH_COMMENT_FOR_POST_INCLUDING_AVA:
             return action.payload;
         case ADD_COMMENT:
             return [...comments, action.payload];

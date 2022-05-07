@@ -49,10 +49,10 @@ export default function App() {
           <Routes>
             <Route exact path="/" element={<Homepage/>}/>
             <Route exact classname={classes.MainPage} path="/mainpage" element={<MainPage/>} />
-            <Route exact path="/profile" element={<Profile_page/>}/>
+            <Route exact path="/profile/:user_id" element={<Profile_page/>}/>
             <Route exact path="/forums/:post_category_id" element={<ForumPage/>}/>
             <Route exact path="/create_post" element={<CreateNewPost/>}/>
-            <Route exact path="/post_detail" element={<PostDetail/>}/>
+            <Route exact path="/postdetail/:post_id" element={<PostDetail/>}/>
             <Route exact path="/lessons_page" element={<Lessons_main_page/>}/>
             <Route exact path="/chosen_coin/:id" element={<Chosen_coins/>}/>
             <Route exact path="/news_page" element={<News_main_page/>}/>

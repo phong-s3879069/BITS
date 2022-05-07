@@ -1,22 +1,43 @@
 import { EditAvatar, EditProfile } from "../forms/EditProfile"
-export default function PersonalInformation() {
+import { userFollow, userUnfollow } from "../../redux_BITS/actions/profile"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
+export default function PersonalInformation({userInfo}) {
+    const { authData } = useSelector((state) => state?.authReducer)
+
+    const [follow, setFollow] = useState(false);
+    const [followersCount, setFollowerCount] = useState(0)
+    const dispatch = useDispatch();
+    
+    useEffect(() => { 
+        if (userInfo?.followers?.includes(authData?._id)) {
+            setFollow(true)
+        }
+        setFollowerCount(userInfo?.followers?.length)
+    }, [userInfo, authData])
     return (
-        <div className="row my-5">
+        <div className="row my-4">
             <div className="col-sm-12 col-md-4 col-lg-4">
 
-                <img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" class="rounded-circle mx-auto my-auto d-block w-50" alt="Profile Image" />
-                <EditAvatar />
+            <img src={`${userInfo?.avatar ? `https://cryptoconnect.s3.amazonaws.com/${userInfo?.avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `} alt="" width="100" height="300" class="rounded-circle me-2" />
+            {authData && authData?._id === userInfo?._id
+                    ?<EditAvatar /> : <></>}
 
             </div>
 
-            <div className="col-sm-12 col-md-8 col-lg-8">
-                <h4>Phong Tran</h4>
+            <div className="col-sm-12 col-md-8 col-lg-8 mt-5">
+                <h4>{userInfo?.name}</h4>
                 <div class="d-flex flex-row">
                     <h6>Email:</h6>
-                    <p class="mx-2" >tranduyphong18072002@gmail.com</p>
+                    <p class="mx-2" >{userInfo?.email}</p>
                 </div>
                 <h6>Bio:</h6>
-                <p>Hello</p>
+                <p>{userInfo?.bio}</p>
+                <div class="d-flex">
+                    <h6>Followers:</h6>
+                    <p class="mx-3">{followersCount}</p>
+                </div>
+                
                 <div class="d-flex">
                     <h6 class="me-3">Contact:</h6>
                     <a href='#'>
@@ -31,42 +52,32 @@ export default function PersonalInformation() {
                     <a href='#'>
                         <img src="https://cdn.icon-icons.com/icons2/2428/PNG/512/linkedin_black_logo_icon_147114.png" class="rounded-circle me-2" style={{ width: "30px" }}></img>
                     </a>
-                    <button type="button" class="btn btn-warning ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Edit
-                    </button>
+                    {authData && authData?._id === userInfo?._id
+                    ? <></> : 
+                    follow == false ?
+                    <button type="button" class="btn btn-warning ms-auto"
+                     onClick={() => {
+                        setFollow(!follow)
+                        setFollowerCount(followersCount + 1)
+                        dispatch(userFollow(userInfo?._id, authData?._id))
+                     }}
+                     >Follow</button> : 
+                     <button type="button" class="btn btn-warning ms-auto"
+                     onClick={() => {
+                        setFollow(!follow)
+                        setFollowerCount(followersCount - 1)
+                        dispatch(userUnfollow(userInfo?._id, authData?._id))
+                     }}
+                     >UnFollow</button>
+                     }
+                    
+                    {authData && authData?._id === userInfo?._id
+                    ?<button type="button" class="btn btn-warning ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        
+                    Edit
+                </button>: <></>}
                     <EditProfile />
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div>
-                                Post
-                            </div>
-                            <div class="ms-2">
-                                44
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                Likes
-                            </div>
-                            <div class="ms-2">
-                                345
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div>
-                                Followers
-                            </div>
-                            <div class="ms-3">
-                                21
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
 
         </div>

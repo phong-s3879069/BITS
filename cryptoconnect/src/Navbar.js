@@ -49,12 +49,12 @@ export default function Navbar() {
 						</ul>
 						{role ? <ul class="nav navbar-nav ms-auto"> <div className="dropdown">
                                 <a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle p-1 rounded-pill" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                                    <img src="http://cdn.onlinewebfonts.com/svg/img_24787.png" alt="" width="10px" height="60px" class="rounded-circle me-2" />
+								<img src={`${authData?.avatar ? `https://cryptoconnect.s3.amazonaws.com/${authData?.avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `} alt="" width="32" height="32" class="rounded-circle me-2" />
                                     <strong class="text-white">{authData?.username}</strong>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser2" data-popper-placement="top-end">
                                     {role.map((element) => element == 'admin' && <li><a class="dropdown-item" href="/addadmin">Add Admin</a></li>)}
-                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                    <li><a class="dropdown-item" href={`/profile/${authData?._id}`}>Profile</a></li>
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="/" onClick={() => dispatch(logout())}>Sign out</a></li>
                                 </ul>

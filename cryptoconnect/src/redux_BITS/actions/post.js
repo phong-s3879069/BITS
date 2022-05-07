@@ -3,8 +3,10 @@ import * as api from '../api/post'
 import { CREATE_POST, 
     UPDATE_POST, 
     DELETE_POST, 
-    FETCH_POST_DETAIL, 
-    FETCH_COMMENT_FOR_POST, 
+    FETCH_POST_DETAIL,
+    FETCH_POST_DETAIL_INCLUDING_CATEGORY, 
+    FETCH_COMMENT_FOR_POST,
+    FETCH_COMMENT_FOR_POST_INCLUDING_AVA, 
     ADD_COMMENT, 
     UPDATE_COMMENT,
     DELETE_COMMENT,
@@ -65,11 +67,35 @@ export const getPostDetail = (id) => async (dispatch) => {
     }
 }
 
+export const getPostDetailIncludingCategory = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchPostDetailIncludingCategory(id);
+
+        dispatch ({type: FETCH_POST_DETAIL_INCLUDING_CATEGORY, payload: data});
+
+        if (!data) {
+            window.location.replace("/*")
+        } 
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const getCommentForPost = (id) => async (dispatch) => {
     try {
         const { data } = await api.fetchCommentForPost(id);
 
         dispatch ({type: FETCH_COMMENT_FOR_POST, payload: data});
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const getCommentForPostIncludingAva = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchCommentForPostIncludingAva(id);
+
+        dispatch ({type: FETCH_COMMENT_FOR_POST_INCLUDING_AVA, payload: data});
     } catch (error) {
         console.log(error.message)
     }

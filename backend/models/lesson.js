@@ -2,11 +2,10 @@ var mongoose = require('mongoose')
 var LessonSchema = new mongoose.Schema({
     title: String,
     content: String,
-    breaking: String,
     image: String,
     lessons_category_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"lessons_categories",
+        ref:"lesson_categories",
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,

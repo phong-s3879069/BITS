@@ -76,6 +76,84 @@ exports.fetchPostDetail = async (req, res) => {
     })
 }
 
+// fetch post detail including post category
+
+exports.fetchPostDetailIncludingCategory = async (req, res) => {
+    postModel.aggregate([
+        { $match: { _id: mongoose.Types.ObjectId(req.params.id) } },
+        {
+            $lookup: {
+                from: "post_categories",
+                localField: "post_category_id",
+                foreignField: "_id",
+                as: "post_categories"
+            }
+        },
+        {
+            $project: {
+                user_id: 1,
+                category_id: 1,
+                title: 1,
+                content: 1,
+                votes: 1,
+                images: 1,
+                createdAt: 1,
+                updatedAt: 1,
+                "post_categories._id": 1,
+                "post_categories.name": 1,
+            }
+        },
+    ]).exec((error, data) => {
+        if (error) {
+            console.log(error)
+            return res.send([])
+        } else {
+            console.log(data)
+            return res.send(data)
+        }
+    })
+}
+
+// fetch comment for post detail including ava of user
+
+exports.fetchCommentForPostIncludingAva = async (req, res) => {
+    commentModel.aggregate([
+        { $match: { post_id: mongoose.Types.ObjectId(req.params.post_id) } },
+        {
+            $lookup: {
+                from: "users",
+                localField: "user_id",
+                foreignField: "_id",
+                as: "users"
+            }
+        },
+        {
+            $project: {
+                user_id: 1,
+                post_id:1,
+                content: 1,
+                images: 1,
+                createdAt: 1,
+                updatedAt: 1,
+                "users.name": 1,
+                "users.username": 1,
+                "users.avatar":1
+            }
+        },
+        {$sort: {createdAt: -1}}
+
+    ]).exec((error, data) => {
+        if (error) {
+            console.log(error)
+            return res.send([])
+        } else {
+            console.log(data)
+            return res.send(data)
+        }
+    })
+    // .sort({ 'createdAt': 'desc' })
+}
+
 // fetch comment for post detail
 exports.fetchCommentForPost = async (req, res) => {
     commentModel.find({ post_id: req.params.post_id }, function (error, data) {

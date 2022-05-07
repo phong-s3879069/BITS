@@ -14,20 +14,22 @@ import CryptoContext from './CryptoContext'
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  
+
   <React.StrictMode>
-  <Provider store={store}>
-    <CryptoContext>
-      <App />
-    </CryptoContext>
-  </Provider>
+    <Provider store={store}>
+      <CryptoContext>
+        <App />
+      </CryptoContext>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Footer />
+    {/* <CryptoContext> */}
+      <Footer />
+    {/* </CryptoContext> */}
   </React.StrictMode>,
   document.getElementById('footer_html')
 );

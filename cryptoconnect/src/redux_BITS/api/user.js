@@ -8,3 +8,4 @@ export const checkUser = () => axios.get(endPoint + "/user", {headers: authHeade
 export const signUp = (registrant) => axios.post(endPoint + "/signup", registrant)
 
 export const login = (data) => axios.post(endPoint + '/login', data)
+

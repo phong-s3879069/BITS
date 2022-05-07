@@ -1,133 +1,174 @@
-import React from 'react';
+import { useState } from "react"
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useDispatch, useSelector } from "react-redux";
+import { updateComment, deleteComment } from "../../redux_BITS/actions/post";
+import * as moment from 'moment'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import * as moment from 'moment'
-import { addComment } from "../../redux_BITS/actions/post";
-import EditComment from '../forms/EditComment';
-import './Forum.css'
+import { useParams } from "react-router-dom";
 
-export default function Comment_Section() {
+import { nl2br } from '../../utils/index'
+
+export default function Comment_Section({ comment }) {
+
   const validationSchema = Yup.object().shape({
     content: Yup.string().trim()
-        .required('Content is required')
-        .matches(
-            /^[a-zA-Z0-9 ?,.$'"-:+_();@!%*#?&\/\\(\r\n|\r|\n)]+$/,
-            'Content cannot contain certain special characters. Be careful with apostrophe. The valid one is " \' "'
-        ),
-    images: Yup.mixed()
+      .required('Content is required')
+      .matches(
+        /^[a-zA-Z0-9 ?,.$'"-:+_();@!%*#?&\/\\(\r\n|\r|\n)]+$/,
+        'Content cannot contain certain special characters. Be careful with apostrophe. The valid one is " \' "'
+      ),
+    // images: Yup.mixed()
 
-        .test('fileSize', 'The file is too large', (value) => {
-            if (!value.length) {
-                return true; // attachment is optional
-            }
-            return value[0].size <= 2000000;
-        })
-        .test('fileType', 'Only jpeg/png file is accepted', (value) => {
-            if (!value.length) {
-                return true; // attachment is optional
-            }
-            return (
-                value[0].type === 'image/jpeg' ||
-                value[0].type === 'image/png'
-            );
-        }),
-});
-const {
+    //     .test('fileSize', 'The file is too large', (value) => {
+    //         if (!value.length) {
+    //             return true; // attachment is optional
+    //         }
+    //         return value[0].size <= 2000000;
+    //     })
+    //     .test('fileType', 'Only jpeg/png file is accepted', (value) => {
+    //         if (!value.length) {
+    //             return true; // attachment is optional
+    //         }
+    //         return (
+    //             value[0].type === 'image/jpeg' ||
+    //             value[0].type === 'image/png'
+    //         );
+    //     }),
+  });
+  const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-} = useForm({
+  } = useForm({
     resolver: yupResolver(validationSchema),
-});
+  });
+
+  const [edit, setEdit] = useState(false);
+
+  // const [commentData, setCommentData] = useState({
+  //     _id: '6266755ae268d69e6807440e', content: '', images: null
+  // })
+  const post_id = useParams();
+
+  const dispatch = useDispatch();
+
+  const submit = (data) => {
+
+    // const dataArray = new FormData();
+    // dataArray.append("_id", comment._id);
+    // dataArray.append("content", data.content);
+
+    let commentUpdate = {
+      _id: comment._id,
+      content: data.content
+    }
+    // if (commentData.images != null) {
+    //     dataArray.append("images", commentData.images, { type: 'image/jpeg' });
+    // }
+
+
+    dispatch(updateComment(commentUpdate));
+
+  }
+  const { authData } = useSelector((state) => state?.authReducer)
+  console.log(comment.users)
+
+  // console.log(comment)
+
   return (
-    <div>
-      <section class="CommentSection">
-      <div class='mt-2'>
-        <div class='card bg-light'>
-          <div class='card-body container'>
-            <h5>Comments</h5>
-            <div class='row'>
-              <form class='my-4'
-              // onSubmit={handleSubmit}
-              >
-                <div className='form-floating'>
-                  <textarea
-                    className='form-control'
-                    placeholder='Leave a comment here'
-                    id='floatingTextarea2'
-                    style={{
-                      height: '100px',
-                    }}
-                  />
+    <div class="card">
+      <div class="container-fluid">
+        <div class="row justify-content-center my-1">
+          <div class="col-11" style={{ backgroundColor: "lightgrey;" }}>
+            <div class="row">
+              {/* <div class="col-md-2 col-12 d-flex align-items-center justify-content-center">
+                                <img src={`${comment?.users[0].avatar ? `https://crytoconnect.s3.amazonaws.com/${comment?.users[0].avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `}
+                                    class="img-fluid rounded-circle m-2 w-80" alt=""></img>
+                            </div> */}
+              <div class="container">
+                <div class="row row-cols-auto">
+                  <div class="col">
+                  <img src={`${comment?.users[0].avatar ? `https://cryptoconnect.s3.amazonaws.com/${comment?.users[0].avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `}
+                  class="img rounded-circle m-2" width="40" height="40" alt=""></img>
+                  </div>
+                  <div class="col">
+                  <label id="commentOwner">{comment?.users[0].name}</label>
+                  </div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col">
+                  {authData && authData._id === comment?.user_id && (edit == true
+                  ? <div></div>
+                  :
+                  <div class="dropend d-flex">
+
+                    <button type="button" class="btn btn-primary ms-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul class="dropdown-menu">
+                      <li><button class="dropdown-item" onClick={() => setEdit(true)}>Edit</button></li>
+                      <li><button class="dropdown-item" onClick={() => { dispatch(deleteComment(comment._id)); window.location.replace(`/postdetail/${post_id}`) }}>Delete</button></li>
+                    </ul>
+                  </div>
+                )}
+                  </div>
                 </div>
-                <button
-                  type='submit'
-                  className='btn btn-light mt-3 pull-right'
-                >
-                  Comment
-                </button>
-              </form>
+              </div>
+              <div class="col-md-10 col-12">
+                <div class="row justify-content-end">
+                  {/* <div class="col-md-3 col-12 text-md-end text-center me-2 my-2 ms-2"> */}
+                  {moment(comment.updatedAt).fromNow()}
+                  {/* </div> */}
+                </div>
+
+                <div class="row my-1">
+                  {authData && authData._id === comment?.user_id && (edit == true
+                    ? <form onSubmit={handleSubmit(submit)}>
+                      <textarea name="content" className={`form-control ${errors.content
+                        ? 'is-invalid'
+                        : ''}`} {...register('content')} defaultValue={comment.content}>
+
+                      </textarea>
+                      <div className='invalid-feedback'>
+                        {errors.content?.message}
+                      </div>
+                      <input name="_id" type="hidden" value={comment._id} />
+                      <div class="d-flex my-3">
+                        <button type="button" class="btn btn-danger me-auto" onClick={() => { dispatch(deleteComment(comment._id)); window.location.replace(`/postdetail/${post_id}`) }}>Delete</button>
+
+                        <button type="button" class="btn btn-light me-2" onClick={() => setEdit(!edit)}>Cancel</button>
+                        <button type="submit" class="btn btn-primary me-2">Save</button>
+
+                      </div>
+                    </form> :
+                    <></>
+                  )}
+                  
+                  <p class="me-2">{nl2br(comment.content)}</p>
+                  
+                  
+                </div>
+
+
+              </div>
+
             </div>
-            {/* {fetchComment.length > 0 &&
-                            fetchComment.map((item) => (
-                                <CommentObject data={item} />
-                            ))} */}
           </div>
         </div>
       </div>
-    </section>
-    <section>
-    <div class='row'
-    // key={_id}
-    >
-      <div class='d-flex mb-4'>
-        <div class='flex-shrink-0'>
-          <img
-            class='rounded-circle'
-            src='https://dummyimage.com/50x50/ced4da/6c757d.jpg'
-            alt='...'
-          />
-        </div>
-        <div class='ms-3'>
-          <div class='fw-bold'>{
-            // username
-          }
-            Username
-          </div>
-          {/* {isEditing ? (
-                        <textarea
-                            onChange={(e) =>
-                                setUpdateDataComment(e.target.value)
-                            }
-                        >
-                            {content}
-                        </textarea>
-                    ) : (
-                        <div>{content}</div>
-                    )} */}
-          {/* { */}
-          {/* user_id === currentUser.id && ( */}
-          <div>
-            <p>This is the content of the comment.</p>
-          </div>
-          <>
-            <div className='btn btn-danger comment-btn'>
-              Delete
-            </div>
-            <div className='btn comment-btn'>
-              <EditComment/>
-            </div>
-          </>
-        </div>
-      </div>
-    </div> 
-    </section>
     </div>
-    
   )
 }

@@ -24,11 +24,11 @@ export default function Post({ post }) {
       <div class="card-header text-muted"
       >
         <div>
-          <a
+          <h4><a
             href={`/profile/${post?.user_id}`}
             style={{ "text-decoration": "none", color: "white" }}>
-            Posted by: {post?.users[0].name}@{post?.users[0].username}
-          </a>
+            {post?.users[0].name}
+          </a></h4>
           <span class="float-end">
             {moment(post?.createdAt).fromNow()}
           </span>
@@ -38,7 +38,6 @@ export default function Post({ post }) {
         <div class="card-body">
           <h3 class="card-title text-light">
             {post?.title}
-            Title
           </h3>
           <p class="class-text text-light">
             {post?.content && post?.content && post?.content.length > 400

@@ -25,6 +25,7 @@ import CreateNewPost from './components/forum/Create_New_Post'
 
 import {makeStyles} from '@material-ui/core' //Material UI
 import Chosen_coins from './components/coin_item/chosen_coin';
+import Chat from './components/chat/Chat';
 
 require("regenerator-runtime/runtime");
 export default function App() {
@@ -58,6 +59,7 @@ export default function App() {
             <Route exact path="/news_page" element={<News_main_page/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/chat" element={<Chat/>}/>
           </Routes>
         </div>
       </Router>

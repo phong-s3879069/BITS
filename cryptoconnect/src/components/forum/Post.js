@@ -47,7 +47,7 @@ export default function Post({ post }) {
         </div>
         <div class="img">
           <img
-            class="card-img-bottom img-fluid post-img mx-auto d-block"
+            class="card-img-bottom img-fluid mx-auto d-block"
             src={`https://cryptoconnect.s3.amazonaws.com/${post?.images}`}
             alt="post-image"
 

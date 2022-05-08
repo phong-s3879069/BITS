@@ -1,5 +1,5 @@
 import * as api from "../api/user";
-import { SIGN_UP, LOGIN, GET_ROLE, LOGOUT } from "../constants/actionTypes";
+import { SIGN_UP, LOGIN, GET_ROLE, LOGOUT, ADD_ADMIN } from "../constants/actionTypes";
 export const getRole = () => async (dispatch) => {
     console.log("helllooooo")
     try {
@@ -49,6 +49,22 @@ export const login = (user) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         dispatch({type: LOGOUT})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const addAdmin = (user) => async (dispatch) => {
+    try {
+        const {data} = await api.addAdmin(user);
+
+        console.log("add admin action")
+
+        dispatch({ type: ADD_ADMIN, payload: data });
+        console.log(data.message)
+        if(data.message == null){
+            window.location.replace('http://localhost:3000');
+        }
     } catch (error) {
         console.log(error)
     }

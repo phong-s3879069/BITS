@@ -1,4 +1,4 @@
-import { FETCH_PERSONAL_INFO, UPDATE_AVATAR, UPDATE_PROFILE, USER_FOLLOW, USER_UNFOLLOW } from "../constants/actionTypes";
+import { ADD_ADMIN, FETCH_PERSONAL_INFO, UPDATE_AVATAR, UPDATE_PROFILE, USER_FOLLOW, USER_UNFOLLOW } from "../constants/actionTypes";
 
 export default (user = [], action) => {
     switch (action.type) {
@@ -15,6 +15,8 @@ export default (user = [], action) => {
         case USER_UNFOLLOW:
             console.log("USER_UNFOLLOW");
             return [...user, action.payload];
+        case ADD_ADMIN:
+            return [action.payload];
         default:
             console.log("Default");
             return user;

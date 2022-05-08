@@ -92,7 +92,7 @@ exports.fetchPostDetailIncludingCategory = async (req, res) => {
         {
             $project: {
                 user_id: 1,
-                category_id: 1,
+                post_category_id: 1,
                 title: 1,
                 content: 1,
                 votes: 1,

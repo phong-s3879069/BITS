@@ -18,11 +18,9 @@ export default function PersonalInformation({userInfo}) {
     return (
         <div className="row my-4">
             <div className="col-sm-12 col-md-4 col-lg-4">
-
-            <img src={`${userInfo?.avatar ? `https://cryptoconnect.s3.amazonaws.com/${userInfo?.avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `} alt="" width="100" height="300" class="rounded-circle me-2" />
+            <img src={`${userInfo?.avatar ? `https://cryptoconnect.s3.amazonaws.com/${userInfo?.avatar}` : 'http://cdn.onlinewebfonts.com/svg/img_24787.png'} `} alt="" width="250" height="250" class="rounded-circle me-2" />
             {authData && authData?._id === userInfo?._id
                     ?<EditAvatar /> : <></>}
-
             </div>
 
             <div className="col-sm-12 col-md-8 col-lg-8 mt-5">

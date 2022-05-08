@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var Lessons_categorySchema = new mongoose.Schema({
+var Lesson_categorySchema = new mongoose.Schema({
     name: String
  })
- exports.lessons_category = mongoose.model('Lessons_category', Lessons_categorySchema)
+ exports.lesson_category = mongoose.model('Lesson_category', Lesson_categorySchema)

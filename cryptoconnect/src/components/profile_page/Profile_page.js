@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './../../App.css';
 import FavouriteCoins from './FavouriteCoins';
 import { useEffect } from 'react';
-import { getOwnedPosts, getPersonalInfo, getSavedFunction } from '../../redux_BITS/actions/profile';
+import { getOwnedPosts, getPersonalInfo } from '../../redux_BITS/actions/profile';
 import { useParams } from 'react-router-dom';
 
 export default function ProfilePage() {
@@ -21,9 +21,11 @@ export default function ProfilePage() {
 
     useEffect(() => {
         dispatch(getPersonalInfo(user_id.user_id));
+        dispatch(getOwnedPosts(user_id.user_id));
     }, [dispatch])
 
     const userInfo = useSelector((state) => state.user)
+    const userPostList = useSelector((state) => state.posts)
     console.log(userInfo)
     // useEffect(() => {
     //     dispatch(getOwnedPosts(user_id.user_id));
@@ -40,7 +42,7 @@ export default function ProfilePage() {
     // console.log(userSavedFunctionsList)
 
     return (
-        <div style={{ marginTop: 80, marginBottom: 80 }}>
+        <div style={{ marginTop: 80}}>
 
             <div className="container my-5 text-white">
 
@@ -65,13 +67,13 @@ export default function ProfilePage() {
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
 
-                            {/* {userPostList.map((element) => {
+                        {userPostList.map((element) => {
                                 return (
                                     <div>
-                                        <UserPost post={element}/>
+                                        <UserPost post={element} userInfo={userInfo}/>
                                     </div>
                                 )
-                            })} */}
+                            })}
 
 
                         </div>

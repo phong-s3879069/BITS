@@ -1,82 +1,79 @@
-export default function UserPost() {
+import * as moment from 'moment';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { dislike, like } from '../../redux_BITS/actions/post';
+export default function UserPost({ post, userInfo }) {
+    const { authData, role } = useSelector((state) => state?.authReducer)
+    const [isLiked, setIsLiked] = useState(false)
+    const [voteCount, setVoteCount] = useState(0)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        setVoteCount(post?.votes.length)
+    }, [])
+    useEffect(() => {
+        if (post?.votes.includes(authData?._id)) {
+            setIsLiked(true)
+        }
+    }, [authData])
     return (
+
         <div class="container-fluid">
-            <div class="card mb-4 mt-3 row">
-                {/* <div class="card-header text-muted" id={props.element._id}> */}
+            <div class="card mt-3 row">
                 <div class="card-header text-muted">
                     <div>
                         <a
-                            // href={`/profile/${props.element.user_id}`}
+                            //href={`/profile/${props.element.user_id}`}
                             href="#"
-                            style={{ "text-decoration": "none", color: "black" }}
+                            style={{ "text-decoration": "none", color: "white" }}
                         >
-                            {/* Posted by: {props.element.username ? props.element.username : props.username}&nbsp;&nbsp; */}
-                            Posted by: Username
+                            {userInfo.name}
                         </a>
-                        {/* {props.createdAt}
-          {props.isProfilePage ? "" : (props.isUser && currentUser.id !== props.element.user_id ? <button id="flw-btn" type="button" class="btn btn-primary float-right"
-            style={currentUser != null && followState ? { background: "grey" } : {}}
-            onClick={currentUser != null && (followState ? () => { setFollowState(false); unFollow(); } : () => { setFollowState(true); follow(); })}>
-            {followState ? "Unfollow" : "Follow"}
-          </button> : "")} */}
+                        <span class="float-end">
+                            {moment(post.createdAt).fromNow()}
+                        </span>
                     </div>
-                    <span class="pull-right">
-                        &nbsp;&nbsp;
-                    </span>
                 </div>
-                <a
-                    // href={`/forum/post/postdetail/${props.element._id}`}
-                    href="#"
-                    style={{ "textDecoration": "none", color: "black" }}
-                >
+                <a href={`/postdetail/${post._id}`} style={{ "textDecoration": "none", color: "white" }}>
                     <div class="card-body">
                         <h3 class="card-title">
-                            {/* {props.element.title} */}
-                            Title of Post
+                            {post.title}
                         </h3>
-                        {/* <p class="class-text">{props.element && props.element.content && props.element.content.length > 400
-                        ? props.element.content.substring(0, 399) + '......'
-                        : props.element.content}</p> */}
-                        <p class="class-text">Lorum</p>
+                        <p class="class-text">{post.content && post.content && post.content.length > 400
+                            ? post.content.substring(0, 399) + '......'
+                            : post.content}</p>
+                    </div>
+                    <div class="img">
+                        <img
+                            class="card-img-bottom img-fluid mx-auto d-block"
+                            src={`https://cryptoconnect.s3.amazonaws.com/${post?.images}`}
+                            alt="post-image"
+
+                        />
                     </div>
                 </a>
 
-                <div class="card-footer text-muted  d-flex bd-highlight">
-                    <span class='mt-2'>
-                        {/* <span style={props.isUser && liked ? { color: "#0d6efd" } : {}} onClick={props.isUser && (liked ? () => { dis_like(props.element._id); setLiked(false); } : () => { create_like(props.element._id); setLiked(true); })}>
-            <i
-              class="fa fa-thumbs-up hover-icon vote-button w3-large"
-              id="post-{{$post->id}}-up"
-              value="0"
-            ></i>
-          </span> */}
-                        {/* <span style={props.isUser && liked ? { color: "#0d6efd" } : {}} onClick={props.isUser && (liked ? () => { dis_like(props.element._id); setLiked(false); } : () => { create_like(props.element._id); setLiked(true); })}> */}
-                        {/* <i
-                            class="fa fa-thumbs-up hover-icon vote-button w3-large"
-                            id="post-{{$post->id}}-up"
-                            value="0"
-                        ></i> */}
+                <div class="card-footer">
+                    <span class='mt-2' style={isLiked ? { color: "#0d6efd" } : { color: 'white' }} onClick={() => {
+                        if (role) {
+                            if (!isLiked) {
+                                dispatch(like(post?._id, authData?._id))
+                                setVoteCount(voteCount + 1)
+                            } else {
+                                dispatch(dislike(post?._id, authData?._id))
+                                setVoteCount(voteCount - 1)
+                            }
+                            setIsLiked(!isLiked);
+                        }
+                    }}>
                         <i class="bi bi-hand-thumbs-up"></i>
+                        <span class="numberOfLikes p-2 bd-highlight" >
+                            {voteCount} Likes
+                        </span>
                     </span>
                     <span class="numberOfLikes p-2 bd-highlight">
-                        {/* {numberOfVotes ? numberOfVotes.vote.length : props.element.vote.length} Likes */}
-                        Likes
-                    </span>
-                    <span class='mt-2'>
-                        <i class="bi bi-reply"></i>
-                    </span>
-                    <span class="numberOfLikes ms-2 p-2 bd-highlight">
-                        {/* {numberOfVotes ? numberOfVotes.vote.length : props.element.vote.length} Likes */}
-                        Replies
+                        <a href={`/postdetail/${post?._id}`} style={{ "textDecoration": "none", color: "white" }}><i class="bi bi-reply"></i> <span className='ms-2'>Replies</span></a>
                     </span>
                     {/* </span> */}
-                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a
-                        //   href={`/forum/post/postdetail/${props.element._id}`}
-                        href="#"
-                        style={{ "textDecoration": "none", color: "black" }}>
-                        <i class=" fas fa-comment-dots hover-icon w3-large"></i>
-                    </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>

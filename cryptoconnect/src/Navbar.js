@@ -32,7 +32,7 @@ export default function Navbar() {
 						<a class="nav-link" href="/mainpage">Market</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/news_page">News</a>
+						<a class="nav-link" href="/news_page/6277847db17c431f759770ce">News</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/forums/6273a717967fd79763faa5f5">Forum</a>
@@ -54,6 +54,7 @@ export default function Navbar() {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser2" data-popper-placement="top-end">
                                     {role.map((element) => element == 'admin' && <li><a class="dropdown-item" href="/addadmin">Add Admin</a></li>)}
+									{role.map((element) => element == 'admin' && <li><a class="dropdown-item" href="/create_news">Add News</a></li>)}
                                     <li><a class="dropdown-item" href={`/profile/${authData?._id}`}>Profile</a></li>
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="/" onClick={() => dispatch(logout())}>Sign out</a></li>

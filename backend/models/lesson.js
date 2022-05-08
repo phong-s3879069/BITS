@@ -2,8 +2,9 @@ var mongoose = require('mongoose')
 var LessonSchema = new mongoose.Schema({
     title: String,
     content: String,
-    image: String,
-    lessons_category_id: {
+    images: String,
+    author: String,
+    lesson_category_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref:"lesson_categories",
     },
@@ -13,4 +14,4 @@ var LessonSchema = new mongoose.Schema({
     }
  
  },{timestamps: true})
- exports.lessons = mongoose.model('Lesson', LessonSchema)
+ exports.lesson = mongoose.model('Lesson', LessonSchema)

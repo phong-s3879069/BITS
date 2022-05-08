@@ -5,5 +5,7 @@ import posts from './post';
 import comment from './comment';
 import post_categories from "./post_category";
 import user from './profile';
+import news from './news';
+import news_categories from './news_category'; 
 
-export const reducers = combineReducers({ authReducer, posts, comment, post_categories, user});
+export const reducers = combineReducers({ authReducer, posts, comment, post_categories, user, news, news_categories});

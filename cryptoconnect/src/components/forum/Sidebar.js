@@ -22,8 +22,10 @@ export default function Sidebar({post_categories}) {
                     {post_categories && post_categories.map(element => {
                         return (
                             <li class="nav-item">
-                            <a href={`${element._id}`} class="nav-link text-light" aria-current="page">
-                                <svg class="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
+                            <a href={`/forums/${element._id}`} className={`nav-link text-light link-dark ${element._id == post_categories && 'active'}`}
+                            style={{ backgroundColor: `${element._id == post_categories && 'black'}` }}  
+                            aria-current="page">
+                                {/* <svg class="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg> */}
                                 {element.name}
                             </a>
                         </li>

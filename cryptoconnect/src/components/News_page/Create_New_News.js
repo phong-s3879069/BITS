@@ -85,7 +85,7 @@ export default function Create_New_News() {
         dispatch(addNews(dataArray))
         // e.preventDefault();
         // dispatch(addPost({...postData, user_id: authData?._id}))
-        // window.location.replace(`/newsPage/${data.news_category_id}`)
+        window.location.replace(`/news_page/${data.news_category_id}`)
     }
 
 

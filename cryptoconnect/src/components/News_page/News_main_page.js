@@ -28,6 +28,7 @@ export default function News_main_page() {
                 </div>
             </div>
             {/* <div class="tabs_container"> */}
+            
             <News_Sidebar news_categories={news_categories} />
             <div class="container">
                 {/* {count.map((count) => {

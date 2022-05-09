@@ -12,7 +12,7 @@ export default (lessons = [], action) => {
             return [...lessons, action.payload];
         case DELETE_LESSON:
             console.log("DELETE_LESSON");
-            return posts.filter((lesson) => lesson._id != action.payload)
+            return lessons.filter((lesson) => lesson._id != action.payload)
         case FETCH_LESSON_DETAIL:
             return action.payload;
         case FETCH_LESSON_DETAIL_INCLUDING_CATEGORY:

@@ -27,7 +27,7 @@ export default function Post({ post }) {
           <h4><a
             href={`/profile/${post?.user_id}`}
             style={{ "text-decoration": "none", color: "white" }}>
-            {post?.users[0].name}
+            {post?.users[0]?.name}
           </a></h4>
           <span class="float-end">
             {moment(post?.createdAt).fromNow()}

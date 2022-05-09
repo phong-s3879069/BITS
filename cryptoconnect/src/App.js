@@ -29,6 +29,8 @@ import Chat from './components/chat/Chat';
 import Create_New_News from './components/News_page/Create_New_News';
 import News_details_page from './components/News_page/News_details_page';
 import EditPost from './components/forms/EditPost';
+import Create_New_Lesson from './components/lessons_page/Create_New_Lesson';
+import Lesson_details_page from './components/lessons_page/Lesson_details_page';
 
 require("regenerator-runtime/runtime");
 export default function App() {
@@ -58,8 +60,10 @@ export default function App() {
             <Route exact path="/create_post" element={<CreateNewPost/>}/>
             <Route exact path="/editpost/:post_id" element={<EditPost/>}/>
             <Route exact path="/create_news" element={<Create_New_News/>}/>
+            <Route exact path="/create_lesson" element={<Create_New_Lesson/>}/>
             <Route exact path="/postdetail/:post_id" element={<PostDetail/>}/>
-            <Route exact path="/lessons_page" element={<Lessons_main_page/>}/>
+            <Route exact path="/lesson_page/:lesson_category_id" element={<Lessons_main_page/>}/>
+            <Route exact path="/lessondetail/:lesson_id" element={<Lesson_details_page/>}/>
             <Route exact path="/chosen_coin/:id" element={<Chosen_coins/>}/>
             <Route exact path="/news_page/:news_category_id" element={<News_main_page/>}/>
             <Route exact path="/newsdetail/:news_id" element={<News_details_page/>}/>

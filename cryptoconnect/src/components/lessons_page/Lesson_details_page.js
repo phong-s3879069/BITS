@@ -1,12 +1,15 @@
-import './News_details_page.css';
-import './News_items_css.css';
-import News_items from './News_items';
+// import './News_details_page.css';
+// import './News_items_css.css';
+// import News_items from './News_items';
+import Lessons_items from './Lessons_items';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNewsDetailIncludingCategory } from '../../redux_BITS/actions/news';
-import { getNewsFromTopic } from '../../redux_BITS/actions/news';
+// import { getNewsDetailIncludingCategory } from '../../redux_BITS/actions/news';
+import { getLessonDetailIncludingCategory } from '../../redux_BITS/actions/lesson';
+// import { getNewsFromTopic } from '../../redux_BITS/actions/news';
+import { getLessonsFromTopic } from '../../redux_BITS/actions/lesson';
 import { useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -14,18 +17,17 @@ import * as moment from 'moment'
 // import News_form from "./News_form";
 // import EditNews from "./EditNews";
 
-export default function News_details_page() {
-    // const newsList = useSelector((state => state?.news))
-    const news_detail = useSelector((state) => state.news)
+export default function Lesson_details_page() {
+    const lessonList = useSelector((state => state?.lessons))
     const dispatch = useDispatch();
     const { authData, role } = useSelector((state) => state?.authReducer)
-    const { news_id } = useParams();
-    
-    const news_detail_category = news_detail[0]?.news_categories[0]._id;
+    const { lesson_id } = useParams();
+    const lesson_detail = useSelector((state) => state.lessons)
+    const lesson_detail_category = lesson_detail[0]?.lesson_categories[0]._id;
     // console.log(news_detail_category)
     useEffect(() => {
-        dispatch(getNewsDetailIncludingCategory(news_id));
-        dispatch(getNewsFromTopic(news_detail_category))
+        dispatch(getLessonDetailIncludingCategory(lesson_id));
+        dispatch(getLessonsFromTopic(lesson_detail_category))
         // dispatch(getCommentForPostIncludingAva(post_id));
         // dispatch(getPostDetail(post_id));
         // dispatch(getCommentForPost(post_id));
@@ -49,23 +51,23 @@ export default function News_details_page() {
                             {/* <div style={{float: 'right', marginRight: '5%'}}><EditNews/></div> */}
                             <header class='my-4'>
                                 <h1 className='fw-bolder'>
-                                    {news_detail[0]?.title}
+                                    {lesson_detail[0]?.title}
                                 </h1>
-                                {authData?._id === news_detail[0]?.user_id && <a href={`/editnews/${news_detail[0]?._id}`} class="btn btn-warning ms-auto">EDIT THIS news</a>}
-                                <p>Last Updated: {moment(news_detail[0]?.updatedAt).fromNow()}</p>
+                                {authData?._id === lesson_detail[0]?.user_id && <a href={`/editlesson/${lesson_detail[0]?._id}`} class="btn btn-warning ms-auto">EDIT THIS LESSON</a>}
+                                <p>Last Updated: {moment(lesson_detail[0]?.updatedAt).fromNow()}</p>
                                 <hr class="sidebar-hr" />
                                 <p class='fw-normal'>
                                     Categories:
                                     <button class='btn btn-light btn-sm cat-button'>
-                                        {news_detail[0]?.news_categories[0].name}
+                                        {lesson_detail[0]?.lesson_categories[0].name}
                                     </button>
                                 </p>
                             </header>
                             <div class="img mb-3">
-                                {news_detail[0]?.images && news_detail[0]?.images != '' ? <img
-                                    class="card-img-bottom img-fluid news-img mx-auto d-block"
-                                    src={`https://cryptoconnect.s3.amazonaws.com/${news_detail[0]?.images}`}
-                                    alt="news-image" /> : <></>}
+                                {lesson_detail[0]?.images && lesson_detail[0]?.images != '' ? <img
+                                    class="card-img-bottom img-fluid lesson-img mx-auto d-block"
+                                    src={`https://cryptoconnect.s3.amazonaws.com/${lesson_detail[0]?.images}`}
+                                    alt="lesson-image" /> : <></>}
 
 
 
@@ -74,7 +76,7 @@ export default function News_details_page() {
                                 className='mb-4 '
                                 style={{ textAlign: 'justify' }}
                             >
-                                <p class="text-break">{news_detail[0]?.content}</p>
+                                <p class="text-break">{lesson_detail[0]?.content}</p>
 
                             </section>
                             <hr class="sidebar-hr" />
@@ -86,19 +88,19 @@ export default function News_details_page() {
 
                 </div>
             </div>
-            <div className='news_relate_container news_container'>
-                <div className="news_body_header" style={{ marginTop: '0%' }}>Relevant news</div>
+            <div className='lesson_relate_container lesson_container'>
+                <div className="lesson_body_header" style={{ marginTop: '0%' }}>Relevant lesson</div>
                 <div className="container">
                     <div className="row">
-                    {news_detail?.map((element, i) => {
+                    {lessonList?.map((element, i) => {
                         if (i % 4 == 0){
                             return (
                                 <div class= "row">
                                     {[0,1,2,3].map((ele) => {
-                                        if(i + ele < news_detail.length){
+                                        if(i + ele < lessonList.length){
                                             return (
                                                 <div class="col-3">
-                                                    <News_items news={news_detail[i+ ele]}/>
+                                                    <Lessons_items lessons={lessonList[i+ ele]}/>
                                                 </div>    
                                             )
                                         }

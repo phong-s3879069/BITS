@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 // import { getPostDetail, updatePost } from '../../redux_sepm/actions/posts'
-import { getPostDetail, updatePost, deletePost } from '../../redux_BITS/actions/post';
+import { getPostDetail, updatePost, deletePost, getPostCategory } from '../../redux_BITS/actions/post';
 ;
 // import { deletePost } from '../../redux_sepm/actions/posts';
 // import { getTopicFromLang } from '../../redux_sepm/actions/language';
@@ -71,6 +71,7 @@ export default function EditPost() {
 
     useEffect(() => {
         dispatch(getPostDetail(post_id));
+        dispatch(getPostCategory())
         // topic_id = post_detail[0]?.category_id
 
     }, [dispatch])
@@ -86,6 +87,7 @@ export default function EditPost() {
     }, [post_detail])
 
     const topicList = useSelector((state) => state?.post_categories);
+    console.log(topicList)
     console.log(postData._id)
 
     const update = () => {
@@ -111,7 +113,7 @@ export default function EditPost() {
             <div className="row justify-content-center">
                 <div className='card mb-4 col-6'>
 
-                    <div className='card-header text-center'>
+                    <div className='card-header text-center text-white'>
                         EDIT POST
                     </div>
 
@@ -119,7 +121,7 @@ export default function EditPost() {
                         <form enctype='multipart/form-data' onSubmit={handleSubmit(update)}>
                             <div className='row'>
                                 <input type='hidden' name="_id" lable="_id" value={post_id} />
-                                <div className='form-group mb-3 col-7'>
+                                <div className='form-group mb-3 col-7 text-white'>
                                     <label for='posttitle'>Title</label>
                                     <input type='text' name="title" label='title' value={postData?.title} className={`form-control border border-secondary ${errors.title
                                         ? 'is-invalid'
@@ -130,7 +132,7 @@ export default function EditPost() {
                                         {errors.title?.message}
                                     </div>
                                 </div>
-                                <div className='form-group mb-3 col-5'>
+                                <div className='form-group mb-3 col-5 text-white'>
                                     <label for='postcate'>
                                         Category
                                     </label>
@@ -154,7 +156,7 @@ export default function EditPost() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='form-group mb-3'>
+                            <div className='form-group mb-3 text-white'>
                                 <label for='postcontent'>Content</label>
                                 <textarea placeholder='Post Content' name="content" lable='content' value={postData?.content} id='postcontent'
                                     className={`form-control border border-secondary ${errors.content
@@ -166,7 +168,7 @@ export default function EditPost() {
                                 </div>
                             </div>
 
-                            <div className='form-group mb-3'>
+                            <div className='form-group mb-3 text-white'>
                                 <div className='custom-file'>
                                     <label className='custom-file-label' for='postimage'>
                                         Upload Image

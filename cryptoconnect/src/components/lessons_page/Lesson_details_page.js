@@ -2,6 +2,7 @@
 // import './News_items_css.css';
 // import News_items from './News_items';
 import Lessons_items from './Lessons_items';
+import './Lesson_details_page.css'
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLessonDetailIncludingCategory } from '../../redux_BITS/actions/lesson';
 // import { getNewsFromTopic } from '../../redux_BITS/actions/news';
 import { getLessonsFromTopic } from '../../redux_BITS/actions/lesson';
+import RelevantLesson from './RelevantLesson';
 import { useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -18,19 +20,14 @@ import * as moment from 'moment'
 // import EditNews from "./EditNews";
 
 export default function Lesson_details_page() {
-    const lessonList = useSelector((state => state?.lessons))
+    const lesson_detail = useSelector((state => state?.lesson_detail))
     const dispatch = useDispatch();
     const { authData, role } = useSelector((state) => state?.authReducer)
     const { lesson_id } = useParams();
-    const lesson_detail = useSelector((state) => state.lessons)
     const lesson_detail_category = lesson_detail[0]?.lesson_categories[0]._id;
     // console.log(news_detail_category)
     useEffect(() => {
         dispatch(getLessonDetailIncludingCategory(lesson_id));
-        dispatch(getLessonsFromTopic(lesson_detail_category))
-        // dispatch(getCommentForPostIncludingAva(post_id));
-        // dispatch(getPostDetail(post_id));
-        // dispatch(getCommentForPost(post_id));
     }, [dispatch])
 
 
@@ -91,26 +88,7 @@ export default function Lesson_details_page() {
             <div className='lesson_relate_container lesson_container'>
                 <div className="lesson_body_header" style={{ marginTop: '0%' }}>Relevant lesson</div>
                 <div className="container">
-                    <div className="row">
-                    {lessonList?.map((element, i) => {
-                        if (i % 4 == 0){
-                            return (
-                                <div class= "row">
-                                    {[0,1,2,3].map((ele) => {
-                                        if(i + ele < lessonList.length){
-                                            return (
-                                                <div class="col-3">
-                                                    <Lessons_items lessons={lessonList[i+ ele]}/>
-                                                </div>    
-                                            )
-                                        }
-                                    })}
-                                </div>
-                            )
-                        }
-                        
-                    })}
-                    </div>
+                    <RelevantLesson lesson_cat={lesson_detail_category}/>
                 </div>
             </div>
         </div>

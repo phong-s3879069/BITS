@@ -24,7 +24,9 @@ export default function Lessons_items({lessons}) {
                     </div>
                     <div class="card-body-container">
                         <header class="card-body-header">{lessons?.title}</header>
-
+                        <div>
+                            
+                        </div>
                         <p class="card-body-text text-light">
                             {lessons?.content && lessons?.content && lessons?.content.length > 400
                                 ? lessons?.content.substring(0, 399) + '......'

@@ -11,21 +11,22 @@ import { useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import * as moment from 'moment'
+import RelevantNews from './RelevantNews';
 // import News_form from "./News_form";
 // import EditNews from "./EditNews";
 
 export default function News_details_page() {
     // const newsList = useSelector((state => state?.news))
-    const news_detail = useSelector((state) => state.news)
+    const news_detail = useSelector((state) => state.news_detail)
     const dispatch = useDispatch();
     const { authData, role } = useSelector((state) => state?.authReducer)
     const { news_id } = useParams();
-    
+
     const news_detail_category = news_detail[0]?.news_categories[0]._id;
     // console.log(news_detail_category)
     useEffect(() => {
         dispatch(getNewsDetailIncludingCategory(news_id));
-        dispatch(getNewsFromTopic(news_detail_category))
+        // dispatch(getNewsFromTopic(news_detail_category))
         // dispatch(getCommentForPostIncludingAva(post_id));
         // dispatch(getPostDetail(post_id));
         // dispatch(getCommentForPost(post_id));
@@ -51,7 +52,7 @@ export default function News_details_page() {
                                 <h1 className='fw-bolder'>
                                     {news_detail[0]?.title}
                                 </h1>
-                                {authData?._id === news_detail[0]?.user_id && <a href={`/editnews/${news_detail[0]?._id}`} class="btn btn-warning ms-auto">EDIT THIS news</a>}
+                                {authData?._id === news_detail[0]?.user_id && <a href={`/editnews/${news_detail[0]?._id}`} class="btn btn-warning ms-auto">EDIT THIS NEWS</a>}
                                 <p>Last Updated: {moment(news_detail[0]?.updatedAt).fromNow()}</p>
                                 <hr class="sidebar-hr" />
                                 <p class='fw-normal'>
@@ -89,26 +90,7 @@ export default function News_details_page() {
             <div className='news_relate_container news_container'>
                 <div className="news_body_header" style={{ marginTop: '0%' }}>Relevant news</div>
                 <div className="container">
-                    <div className="row">
-                    {news_detail?.map((element, i) => {
-                        if (i % 4 == 0){
-                            return (
-                                <div class= "row">
-                                    {[0,1,2,3].map((ele) => {
-                                        if(i + ele < news_detail.length){
-                                            return (
-                                                <div class="col-3">
-                                                    <News_items news={news_detail[i+ ele]}/>
-                                                </div>    
-                                            )
-                                        }
-                                    })}
-                                </div>
-                            )
-                        }
-                        
-                    })}
-                    </div>
+                    <RelevantNews news_cat={news_detail_category}/>
                 </div>
             </div>
         </div>

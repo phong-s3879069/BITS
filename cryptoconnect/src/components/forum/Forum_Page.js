@@ -4,7 +4,7 @@ import './Forum.css'
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { getPostCategory, getPostFromTopic } from "../../redux_BITS/actions/post";
+import { getAllPost, getPostCategory, getPostFromTopic } from "../../redux_BITS/actions/post";
 
 
 export default function ForumPage() {
@@ -15,7 +15,10 @@ export default function ForumPage() {
   const { post_category_id } = useParams()
   useEffect(() => {
     dispatch(getPostCategory());
-    dispatch(getPostFromTopic(post_category_id))
+    if(post_category_id == "allcategory") {
+      dispatch(getAllPost())
+    } else {
+      dispatch(getPostFromTopic(post_category_id))}
   }, [dispatch])
   console.log(post_categories)
   return (
@@ -26,7 +29,7 @@ export default function ForumPage() {
             {authData && <button style={{ backgroundColor: "black" }} class='btn btn-dark mt-3 mx-auto'><a href="/create_post">Create new Post</a></button>}
           </div>
 
-          <Sidebar post_categories={post_categories} />
+          <Sidebar post_categories={post_categories} post_category_id={post_category_id} />
         </div>
 
         <div class="col-lg-6 ">

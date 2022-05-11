@@ -251,7 +251,29 @@ exports.dislikePost = (req, res) => {
 }
 
 exports.fetchAllPost = (req, res) => {
-    postModel.find({}, function (error, data) {
+    postModel.aggregate([
+        {$lookup: {
+            from: "users",
+            localField: "user_id",
+            foreignField: "_id",
+            as: "users"
+        }},
+        {$project :{
+            title: 1,
+            content: 1,
+            createdAt: 1,
+            updatedAt: 1,
+            user_id: 1,
+            votes: 1,
+            post_category_id: 1,
+            images: 1,
+            "users._id" :1 ,
+            "users.username" :1,
+            "users.name" : 1
+        }},
+        {$sort: {createdAt: -1}}
+        
+    ]).exec((error, data) =>{
         if (error) {
             console.log(error)
             return res.send([])
@@ -259,5 +281,4 @@ exports.fetchAllPost = (req, res) => {
             return res.send(data)
         }
     })
-
 }

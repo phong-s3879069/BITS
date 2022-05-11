@@ -1,7 +1,9 @@
-import { CREATE_POST, DELETE_POST, UPDATE_POST, FETCH_POST_DETAIL, FETCH_BY_TOPIC, LIKE, DISLIKE, FETCH_POST_DETAIL_INCLUDING_CATEGORY, FETCH_OWNED_POSTS } from "../constants/actionTypes";
+import { CREATE_POST, DELETE_POST, UPDATE_POST, FETCH_POST_DETAIL, FETCH_BY_TOPIC, LIKE, DISLIKE, FETCH_POST_DETAIL_INCLUDING_CATEGORY, FETCH_OWNED_POSTS, FETCH_ALL_POST } from "../constants/actionTypes";
 
 export default (posts = [], action) => {
     switch (action.type) {
+        case FETCH_ALL_POST:
+            return action.payload;
         case FETCH_BY_TOPIC:
             return action.payload;
         case LIKE:

@@ -13,7 +13,8 @@ import { CREATE_POST,
     FETCH_BY_TOPIC, 
     LIKE, 
     DISLIKE, 
-    FETCH_ALL_CATEGORY  } from '../constants/actionTypes';
+    FETCH_ALL_CATEGORY,
+FETCH_ALL_POST  } from '../constants/actionTypes';
 
 
 //Action Creators
@@ -169,6 +170,19 @@ export const getPostCategory = () => async (dispatch) => {
         const { data } = await api.fetchAllCategories();
 
         dispatch({ type: FETCH_ALL_CATEGORY, payload: data });
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+export const getAllPost = () => async (dispatch) => {
+    try {
+
+        const { data } = await api.fetchAllPost();
+
+        dispatch({ type: FETCH_ALL_POST, payload: data });
 
     } catch (error) {
         console.log(error.message);

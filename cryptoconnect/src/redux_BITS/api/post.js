@@ -3,6 +3,8 @@ const endPoint = "http://localhost:9000"
 
 // get Post category
 export const fetchAllCategories = () => axios.get(endPoint + '/forums/getPostCategory');
+
+export const fetchAllPost = () => axios.get(endPoint + '/forums/getAllPost');
 // get post for
 export const fetchPostsForTopic = (post_category_id) => axios.get(endPoint + "/forums/getPost/" + post_category_id)
 
@@ -35,5 +37,6 @@ export const deleteComment = (comment_id) => axios.delete(endPoint + '/postdetai
 export const fetchCommentForPost = (post_id) => axios.get(endPoint + '/forums/getPostDetail/getComment/' + post_id)
 
 export const fetchCommentForPostIncludingAva = (post_id) => axios.get(endPoint + '/forums/getPostDetail/getCommentIncludingAva/' + post_id)
+ 
 
 

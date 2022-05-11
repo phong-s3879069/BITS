@@ -8,7 +8,7 @@ export default function Navbar() {
   const {authData, role} = useSelector((state) => state.authReducer)
     console.log(authData)
     console.log(role)
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 	const useStyles = makeStyles(() => ({
 		Navbar: {
 			
@@ -19,7 +19,7 @@ export default function Navbar() {
 
 	const {currency, setCurrency} = CryptoState()
 
-	console.log(currency)
+	
 
 	return (
 		< div className={classes.Navbar}>

@@ -7,6 +7,7 @@ export default function PersonalInformation({userInfo}) {
 
     const [follow, setFollow] = useState(false);
     const [followersCount, setFollowerCount] = useState(0)
+
     const dispatch = useDispatch();
     
     useEffect(() => { 
@@ -15,6 +16,7 @@ export default function PersonalInformation({userInfo}) {
         }
         setFollowerCount(userInfo?.followers?.length)
     }, [userInfo, authData])
+    // console.log(userInfo?.followers)
     return (
         <div className="row my-4">
             <div className="col-sm-12 col-md-4 col-lg-4">
@@ -34,6 +36,10 @@ export default function PersonalInformation({userInfo}) {
                 <div class="d-flex">
                     <h6>Followers:</h6>
                     <p class="mx-3">{followersCount}</p>
+                </div>
+                <div class="d-flex">
+                    <h6>Followings:</h6>
+                    <p class="mx-3">{userInfo?.followings?.length}</p>
                 </div>
                 
                 <div class="d-flex">

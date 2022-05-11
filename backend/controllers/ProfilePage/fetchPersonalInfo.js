@@ -2,6 +2,7 @@ var userModel = require('../../models/user').user;
 var { uploadFile, deleteFile } = require('../s3')
 
 var mongoose = require('mongoose');
+const { user } = require('../../models/user');
 const bucketName = "cryptoconnect/userUploads"
 
 exports.updateAvatar = function (req, res) {
@@ -80,12 +81,19 @@ exports.editProfile = function (req, res) {
 exports.userFollow = (req, res) => {
     userModel.findByIdAndUpdate({_id: req.body.id}, {
         $push: {followers: req.params.id}
+        
     },{new: true}, function(err, result) {
         if(err){
           return res.send(err)
         }
-        res.send(result)
+        userModel.findByIdAndUpdate({_id: req.params.id}, {
+            $push: {followings: req.body.id}
+        }, function (err, data) {
+            return res.send(data)
+        })
     })
+
+
 }
 
 exports.userUnfollow = (req, res) => {
@@ -95,6 +103,10 @@ exports.userUnfollow = (req, res) => {
         if(err){
           return res.send(err)
         }
-        res.send(result)
+        userModel.findByIdAndUpdate({_id: req.params.id},{
+            $pull: {followings: req.body.id}
+        }, function(err, data) {
+            return res.send(data)
+        })
     })
 }

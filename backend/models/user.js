@@ -12,6 +12,11 @@ var UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"users"
     }],
+    followings: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    }],
+    
     savedCoin: [{
         type: mongoose.Schema.Types.ObjectId,
 

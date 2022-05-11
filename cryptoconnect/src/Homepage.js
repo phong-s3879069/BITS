@@ -1,5 +1,8 @@
 import document from "./assets/document.png";
 import forum from "./assets/forum.png";
+import coinmarket from './assets/coinmarket.png'
+import lessonpage from "./assets/lessonpage.png"
+import newspage from "./assets/newspage.png"
 import startgif from "./assets/star.gif"
 import chattraderepeat from "./assets/chattraderepeat.png";
 import welcometowebsite from "./assets/welcometowebsite.mp4";
@@ -21,7 +24,7 @@ export default function Homepage() {
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="animated fadeInDown"></h5>
                                 <p class="animated fadeInUp"></p>
-                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
+                                
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -29,7 +32,7 @@ export default function Homepage() {
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="animated fadeInDown"></h5>
                                 <p class="animated fadeInUp"></p>
-                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
+                                
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -37,18 +40,10 @@ export default function Homepage() {
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="animated fadeInDown"></h5>
                                 <p class="animated fadeInUp"></p>
-                                {/* <p class="animated fadeInUp"><a href="#"></a></p> */}
+                                
                             </div>
                         </div>
                     </div>
-                    {/* <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button> */}
                 </div>
                 <section>
                     <div class="video">
@@ -64,7 +59,7 @@ export default function Homepage() {
                     <div className="text-center ms-5 me-5">
                         <p>Update real-time Cryptocurrency Price</p>
                         <div>
-                            <img src={chattraderepeat} class="figure-img img-fluid rounded" alt="..." />
+                            <img src={coinmarket} class="figure-img img-fluid rounded" alt="..." />
                         </div>
                     </div>
                 </section>
@@ -89,7 +84,7 @@ export default function Homepage() {
                     <div className="text-center ms-5 me-5">
                         <p>We deliver up-to-date, breaking crypto news about the latest Bitcoin, Ethereum, Blockchain, NFTs, and Altcoin trends and happenings.</p>
                         <div>
-                            <img src={chattraderepeat} class="img-fluid rounded" alt="..." />
+                            <img src={newspage} class="img-fluid rounded" alt="..." />
                         </div>
                     </div>
                 </section>
@@ -101,51 +96,10 @@ export default function Homepage() {
                     <div className="text-center ms-5 me-5">
                         <p>Get creative with the world markets by being part of the largest social network on the web for traders and investors. Discorver greate ideas, then publish your own</p>
                         <div>
-                            <img src={chattraderepeat} class="img-fluid rounded" alt="..." />
+                            <img src={lessonpage} class="img-fluid rounded" alt="..." />
                         </div>
                     </div>
                 </section>
-
-                {/* <section class="text-white" id="about" style={{ backgroundColor: "#000", paddingBottom: "5%", paddingTop: "3%" }}>
-                    <h1 className="text-center">ABOUT US</h1>
-                    <div class="section-header-break text-center">--------<img src={startgif} class="img-fluid " style={{ backgroundColor: "#fff", maxWidth: "1.2%", maxHeight: "1.2%" }} />--------</div>
-                    <br />
-                </section>
-
-                <section id="contact" style={{ paddingBottom: "5%", paddingTop: "3%" }}>
-                    <h1 className="text-center">CONTACT US</h1>
-                    <div class="section-header-break text-center">--------<img src={startgif} class="img-fluid" style={{ maxWidth: "1.2%", maxHeight: "1.2%" }} />--------</div>
-                    <br />
-                    <div class="container-fluid">
-                        <div class="row d-flex justify-content-evenly">
-
-                            <div class="col-md-4 text-center">
-                                <div class="contact-address">
-                                    <img src="https://img.icons8.com/ios/50/000000/address--v1.png" />                                <h3>Address</h3>
-                                    <address>Saigon South Residences, District 7, Ho Chi Minh City, Vietnam</address>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 text-center border-start border-dark">
-                                <div class="contact-phone">
-                                    <img src="https://img.icons8.com/ios/50/000000/phone.png" />
-                                    <h3>Phone Number</h3>
-                                    <p>(+84) 852 640 807</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 text-center border-start border-dark">
-                                <div class="contact-email">
-                                    <img src="https://img.icons8.com/ios/50/000000/envelope-dots.png" />
-                                    <h3>Email</h3>
-                                    <p>cryptoconnectservices@gmail.com</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </section> */}
             </section>
         </div>
     )

@@ -5,7 +5,8 @@ import { FETCH_PERSONAL_INFO,
     UPDATE_AVATAR, 
     UPDATE_PROFILE, 
     USER_FOLLOW, 
-    USER_UNFOLLOW } from "../constants/actionTypes";
+    USER_UNFOLLOW,
+    FETCH_OWNED_POSTS } from "../constants/actionTypes";
 
 
 export const getPersonalInfo = (id) => async (dispatch) => {
@@ -61,6 +62,17 @@ export const userUnfollow = (user_id, my_id) => async (dispatch) => {
         console.log("success")
 
         dispatch({type: USER_UNFOLLOW, payload: data});
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getOwnedPosts = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchOwnedPosts(id);
+
+        dispatch({ type: FETCH_OWNED_POSTS, payload: data});
 
     } catch (error) {
         console.log(error.message);

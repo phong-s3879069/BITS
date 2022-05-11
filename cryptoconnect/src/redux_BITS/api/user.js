@@ -9,3 +9,4 @@ export const signUp = (registrant) => axios.post(endPoint + "/signup", registran
 
 export const login = (data) => axios.post(endPoint + '/login', data)
 
+export const addAdmin = (data) => axios.post(endPoint + '/addadmin', data);

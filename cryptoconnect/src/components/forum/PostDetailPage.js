@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostDetail, getCommentForPost, getPostDetailIncludingCategory, getCommentForPostIncludingAva, dislike, like } from "../../redux_BITS/actions/post";
+import { getPostDetailIncludingCategory, getCommentForPostIncludingAva, dislike, like } from "../../redux_BITS/actions/post";
 import { useParams } from "react-router-dom";
 
 import { yupResolver } from '@hookform/resolvers/yup';

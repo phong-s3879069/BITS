@@ -2,7 +2,8 @@ var mongoose = require('mongoose')
 var NewsSchema = new mongoose.Schema({
     title: String,
     content: String,
-    image: String,
+    images: String,
+    author: String,
     news_category_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref:"news_categories",
@@ -13,4 +14,4 @@ var NewsSchema = new mongoose.Schema({
     }
  
  },{timestamps: true})
- exports.news = mongoose.model('New', NewsSchema)
+ exports.news = mongoose.model('News', NewsSchema)

@@ -142,3 +142,15 @@ exports.fetchNewsForTopic =  (req, res) =>  {
         }
     })
 }
+
+exports.fetchAllNews = (req, res) => {
+    newsModel.find({}, function (error, data) {
+        if (error) {
+            console.log(error)
+            return res.send([])
+        } else {
+            return res.send(data)
+        }
+    })
+
+}

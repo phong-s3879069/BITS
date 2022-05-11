@@ -1,6 +1,12 @@
 var router = require('express').Router();
 var multer = require('multer');
-const { fetchNewsForTopic, fetchAllNewsCategories, addNews, updateNews, deleteNews, fetchNewsDetailIncludingCategory } = require('../../controllers/newsController/newsCRUD');
+const { fetchNewsForTopic, 
+    fetchAllNewsCategories, 
+    addNews, 
+    updateNews, 
+    deleteNews, 
+    fetchNewsDetailIncludingCategory,
+fetchAllNews } = require('../../controllers/newsController/newsCRUD');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -15,6 +21,7 @@ var upload = multer({
 
 router.get('/getNews/:news_category_id', fetchNewsForTopic)
 router.get('/getNewsCategory', fetchAllNewsCategories)
+router.get('/getAllNews', fetchAllNews)
 router.post('/news/add',upload.single('images'), addNews)
 router.put('/news/update',upload.single('images'), updateNews)
 router.delete('/news/delete/:id', deleteNews)

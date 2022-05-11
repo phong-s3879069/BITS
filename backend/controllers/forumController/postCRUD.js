@@ -249,3 +249,15 @@ exports.dislikePost = (req, res) => {
 
     })
 }
+
+exports.fetchAllPost = (req, res) => {
+    postModel.find({}, function (error, data) {
+        if (error) {
+            console.log(error)
+            return res.send([])
+        } else {
+            return res.send(data)
+        }
+    })
+
+}

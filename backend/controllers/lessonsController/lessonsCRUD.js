@@ -142,3 +142,15 @@ exports.fetchLessonsForTopic =  (req, res) =>  {
         }
     })
 }
+
+exports.fetchAllLessons = (req, res) => {
+    lessonModel.find({}, function (error, data) {
+        if (error) {
+            console.log(error)
+            return res.send([])
+        } else {
+            return res.send(data)
+        }
+    })
+
+}

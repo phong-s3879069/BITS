@@ -7,7 +7,8 @@ const { fetchLessonsForTopic,
     addLesson, 
     updateLesson, 
     deleteLesson, 
-    fetchLessonDetailIncludingCategory } = require('../../controllers/lessonsController/lessonsCRUD');
+    fetchLessonDetailIncludingCategory,
+fetchAllLessons } = require('../../controllers/lessonsController/lessonsCRUD');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -22,6 +23,7 @@ var upload = multer({
 
 router.get('/getLesson/:lesson_category_id', fetchLessonsForTopic)
 router.get('/getLessonCategory', fetchAllLessonCategories)
+router.get('/getAllLessons', fetchAllLessons)
 router.post('/lesson/add',upload.single('images'), addLesson)
 router.put('/lesson/update',upload.single('images'), updateLesson)
 router.delete('/lesson/delete/:id', deleteLesson)

@@ -9,7 +9,8 @@ const { fetchPostsForTopic,
     likePost, 
     dislikePost, 
     fetchPostDetailIncludingCategory, 
-    fetchCommentForPostIncludingAva} = require('../../controllers/forumController/postCRUD');
+    fetchCommentForPostIncludingAva,
+fetchAllPost} = require('../../controllers/forumController/postCRUD');
 
 var router = require('express').Router();
 
@@ -30,6 +31,7 @@ router.get('/getPost/:post_category_id', fetchPostsForTopic)
 router.put('/posts/like/:id', likePost)
 router.put('/posts/dislike/:id', dislikePost)
 router.get('/getPostCategory', fetchAllCategories)
+router.get('/getAllPost', fetchAllPost)
 router.post('/posts/add',upload.single('images'), addPost)
 router.put('/posts/update',upload.single('images'), updatePost)
 router.delete('/posts/delete/:id', deletePost)

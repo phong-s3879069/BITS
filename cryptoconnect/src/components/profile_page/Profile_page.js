@@ -42,7 +42,7 @@ export default function ProfilePage() {
     // console.log(userSavedFunctionsList)
 
     return (
-        <div style={{ marginTop: 80}}>
+        <div style={{ marginTop: "56px"}}>
 
             <div className="container my-5 text-white">
 
@@ -53,7 +53,7 @@ export default function ProfilePage() {
 
                     <ul class="nav nav-tabs nav-pills with-arrow lined flex-sm-row text-center mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Cheat Sheet</a>
+                            <a class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Saved Coin</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link text-uppercase font-weight-bold rounded-0 border" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Posts</a>
@@ -62,7 +62,7 @@ export default function ProfilePage() {
 
                     <div class="tab-content text-white" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <FavouriteCoins />
+                            <FavouriteCoins userId={user_id.user_id}/>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 

@@ -14,7 +14,7 @@ export default function Chat() {
     Chat: {
       paddingTop: "3%",
       backgroundColor: "#0B1A2F",
-      height: "100vh",
+      height: "100vh - 30vh",
       display: "flex",
       color: "white",
     },
@@ -78,9 +78,8 @@ export default function Chat() {
       fontSize: "25px",
       cursor: "default",
       color: "lightgrey"
-
-
-    }
+    },
+    
 
   }))
   const classes = useStyles()
@@ -218,6 +217,7 @@ export default function Chat() {
       <div className={classes.ChatMenu}>
         <div className={classes.ChatMenuWrapper}>
           <input placeholder="Search for another user..." className={classes.ChatMenuInput}/>
+          <div className="conversation-box">
           {conversations.map((c) => (
             <div key={c._id} onClick={() =>
               setCurrentChat(c)
@@ -226,6 +226,8 @@ export default function Chat() {
               <Conversation conversation={c} currentUser={authData} />
             </div>
           ))}
+          </div>
+          
 
 
         </div>

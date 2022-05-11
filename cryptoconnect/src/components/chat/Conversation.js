@@ -15,6 +15,7 @@ export default function Conversation({ conversation, currentUser }) {
       "&:hover": {
         backgroundColor: 'aliceblue',
       }, 
+  
     },
 
     
@@ -56,7 +57,7 @@ export default function Conversation({ conversation, currentUser }) {
 
   return (
     <div className={classes.Conversation} class="Coversation mt-3">
-      <img className={classes.ConversationImage} src={!user?.avatar ? "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" : user?.avatar} alt="Profile Image"/>
+      <img className={classes.ConversationImage} src={!user?.avatar ? "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" : `https://cryptoconnect.s3.amazonaws.com/${user?.avatar}`} alt="Profile Image"/>
       <span className={classes.ConversationName}>{user?.name}</span>
     </div>
   )

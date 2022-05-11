@@ -17,9 +17,6 @@ var UserSchema = new mongoose.Schema({
         ref:"users"
     }],
     
-    savedCoin: [{
-        type: mongoose.Schema.Types.ObjectId,
-
-        ref:"coins"}]
+    savedCoin: [String]
  })
  exports.user = mongoose.model('User', UserSchema)

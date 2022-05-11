@@ -4,11 +4,14 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getPersonalInfo } from "../../redux_BITS/actions/profile"
 
+const emptyArray = []
 export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat, getConversations }) {
 
   const useStyle = makeStyles(() => ({
     ChatOnline: {
-      marginTop: "10px"
+      marginTop: "10px",
+      overflowY: "scroll",
+      height: "100vh",
     },
     ChatOnlineFollowings: {
       display: "flex",
@@ -47,6 +50,8 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
   const classes = useStyle()
 
 
+  const { authData, role } = useSelector((state) => state.authReducer)
+
 
   const [followings, setFollowings] = useState([])
   const [onlineFollowings, setOnlineFollowings] = useState([])
@@ -58,7 +63,7 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
   const getFollowings = async (req, res) => {
     try {
       const res = await axios.get("http://localhost:9000/profilePage/personalinfo/" + currentUserId);
-      setFollowings(res.data.followings)
+      setFollowings(res.data.followings);
       // console.log(res.data.followers)
     } catch (err) {
       console.log(err)
@@ -74,8 +79,7 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
     getFollowings()
   }, [currentUserId])
 
-
-
+  
 
   //set offline and online following's id
   useEffect(async () => {
@@ -86,15 +90,14 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
 
 
 
-    console.log(followings)
-    console.log(onlineUsers)
-    console.log(getArraysIntersection(followings, onlineUsers))
+    // console.log(followings)
+    // console.log(onlineUsers)
+    // console.log(getArraysIntersection(followings, onlineUsers))
 
-
-    setOfflineFollowings(prev => [])
-    setOnlineFollowings(prev => [])
-
-    await getArraysIntersection(followings, onlineUsers)?.map((id) => {
+    setOnlineFollowings(prev => prev = []);
+    setOfflineFollowings(prev => prev = []);
+    await getArraysIntersection(followings, onlineUsers)?.map((id, idx) => {
+      setOfflineFollowings(prev => [])
       const getUser = async (id) => {
         try {
           const res = await axios.get("http://localhost:9000" + "/profilePage/personalinfo/" + id).then((res) => {
@@ -105,7 +108,6 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
                 return [...prev, JSON.stringify(res.data)]
               } 
               else {
-                console.log()
                 return [...prev]
               }
             })
@@ -129,14 +131,14 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
     
 
     // setOfflineFollowings(offlineFollowings);
-    await offlineFollowingsId?.map((id) => {
+    offlineFollowingsId?.map((id) => {
       const getUser = async (id) => {
         try {
           const res = await axios.get("http://localhost:9000" + "/profilePage/personalinfo/" + id).then((res) => {
             setOfflineFollowings(prev => {
               if (!prev.includes(JSON.stringify(res.data))) {
                 return [...prev, JSON.stringify(res.data)]
-              } 
+              }
               else {
                 return [...prev]
               }
@@ -149,7 +151,7 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
       getUser(id)
     });
 
-    console.log(offlineFollowingsId)  
+    // console.log(offlineFollowingsId)  
 
 
 
@@ -192,7 +194,7 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
             return (
               <div className={classes.ChatOnlineFollowings} onClick={() => handleClick(f)}>
                 <div className={classes.ChatOnlineImgContainer}>
-                  <img className={classes.ChatOnlineImage} src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Profile Image" />
+                  <img className={classes.ChatOnlineImage} src={!f?.avatar ? "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" : `https://cryptoconnect.s3.amazonaws.com/${f?.avatar}`} alt="Profile Image" />
                   <div className={classes.ChatOnlineBadge}></div>
                 </div>
 
@@ -215,7 +217,7 @@ export default function ChatOnline({ onlineUsers, currentUserId, setCurrentChat,
             return (
               <div className={classes.ChatOnlineFollowings} onClick={() => handleClick(f)}>
                 <div className={classes.ChatOnlineImgContainer}>
-                  <img className={classes.ChatOnlineImage} src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Profile Image" />
+                  <img className={classes.ChatOnlineImage} src={!f?.avatar ? "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" : `https://cryptoconnect.s3.amazonaws.com/${f?.avatar}`} alt="Profile Image" />
 
                 </div>
 

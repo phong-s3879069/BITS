@@ -60,7 +60,11 @@ export default function Navbar() {
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="/" onClick={() => dispatch(logout())}>Sign out</a></li>
                                 </ul>
-                            </div> </ul> : <ul class="nav navbar-nav ms-auto"><li class="nav-item">
+                            </div>
+							<div> 
+								<a class="nav-link" href="/chat" style={{color: "white"}}><h3><i class="bi bi-chat-dots"></i></h3></a>
+							</div>
+							</ul> : <ul class="nav navbar-nav ms-auto"><li class="nav-item">
 								<a class="nav-link" href="/login" style={{ color: '#F0F8FF' }}>Login</a>
 
                             </li>

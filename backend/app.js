@@ -18,6 +18,9 @@ const profileRoute = require('./routes/profile/profileRoute')
 const lessonRoute = require('./routes/lesson/lessonRoute')
 const newsRoute = require('./routes/news/newsRoute')
 
+
+const savedCoinRoute = require('./routes/saveCoinRoute/saveCoinRoute')
+
 app.use(morgan("common"))
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -35,6 +38,8 @@ app.use('/messages', messageRoute);
 app.use('/lessonPage', lessonRoute);
 
 app.use('/newsPage', newsRoute)
+
+app.use('/savedCoin', savedCoinRoute)
 
 
 module.exports = app;

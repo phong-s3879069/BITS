@@ -3,6 +3,7 @@ import { makeStyles, AppBar, Container, Toolbar, Typography, Select, MenuItem, c
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { CryptoState } from '../../CryptoContext';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { HistoricalChart, SingleCoin } from '../../config/api';
 import { Line } from 'react-chartjs-2'
@@ -24,11 +25,14 @@ export default function Chosen_coins() {
   }))
   const classes = useStyles()
 
+  const { authData, role } = useSelector((state) => state.authReducer)
+
 
 
 
   const { id } = useParams()
   const [coin, setCoin] = useState()
+  const [isSaved, setIsSaved] = useState(false)
 
   const { currency, symbol } = CryptoState()
 
@@ -39,6 +43,13 @@ export default function Chosen_coins() {
 
   }
 
+  const saveCoin = async () => {
+    await axios.put("http://localhost:9000/savedCoin/add/" + coin?.id + "/" + authData?._id)
+  }
+
+  const unsaveCoin = async () => {
+    await axios.put("http://localhost:9000/savedCoin/delete/" + coin?.id + "/" + authData?._id)
+  }
   
 
   useEffect(() => {
@@ -46,6 +57,12 @@ export default function Chosen_coins() {
    
 
   }, [currency])
+
+  useEffect(() => {
+    if (authData?.savedCoin.includes(id)){
+      setIsSaved(true)
+    }
+  }, [authData])
 
   const profit = coin?.market_data.price_change_percentage_24h > 0;
   console.log(profit)
@@ -73,7 +90,7 @@ export default function Chosen_coins() {
           <img src={coin?.image.large} alt="crypto sybols" class="" width="30%" />
           <h2>{coin?.symbol.toUpperCase()}/USD</h2>
         </div>
-        <div class="col-3 crypto_price_component" >
+        <div class="col-2 crypto_price_component" >
           <h2 class="crypto_price"
             style={{
               color: profit > 0 ? "rgb(14, 203, 129)" : "red",
@@ -110,6 +127,10 @@ export default function Chosen_coins() {
         <div class="col-2 crypto_price_component">
           <h4 class="crypto_price_label">24H Low</h4>
           <h5>{symbol}{" "}{numberWithCommas(coin?.market_data.low_24h[currency.toLowerCase()])}</h5>
+        </div>
+
+        <div class="col-1 crypto_price_component">
+          {authData && (isSaved ?<button type="button" class="btn btn-warning" onClick={() => {unsaveCoin(); setIsSaved(!isSaved)}}>Unsave Coin</button>: <button type="button" class="btn btn-success" onClick={() => {saveCoin(); setIsSaved(!isSaved)}}>Save Coin</button>)}            
         </div>
 
       </div>

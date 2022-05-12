@@ -26,3 +26,10 @@
   color: black;
 }
 
+
+.conversation-box {
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+

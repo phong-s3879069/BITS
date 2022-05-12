@@ -4,6 +4,8 @@ import Banner from "./Banner/Banner";
 import './MainPage.css';
 import { makeStyles } from "@material-ui/core";
 
+
+
 export default function MainPage() {
     const useStyles = makeStyles(() => ({
         MainPage: {

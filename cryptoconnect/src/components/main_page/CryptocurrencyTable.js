@@ -24,6 +24,15 @@ import { CoinList } from "../../config/api";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../../CryptoContext";
 
+/*************************************************************** 
+ * Citation
+*Title: 
+*Author: Piyush-eon
+*Date: 12/05/2022
+* Code version: V1 
+*Availability: https://github.com/piyush-eon/react-crypto-tracker (Accessed 1 December 2021) 
+****************************************************************/ 
+
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
